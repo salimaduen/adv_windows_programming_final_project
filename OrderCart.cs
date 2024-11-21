@@ -21,5 +21,15 @@ namespace Final_Project
         {
 
         }
+
+        private void btnPurchase_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Purchase was successfull!");
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

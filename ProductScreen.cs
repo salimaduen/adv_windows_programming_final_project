@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Final_Project
 {
-    public partial class Summary : Form
+    public partial class ProductScreen : Form
     {
-        public Summary()
+        public ProductScreen()
         {
             InitializeComponent();
         }
@@ -20,6 +20,17 @@ namespace Final_Project
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Book Successfuly Added");
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Book Successfuly Removed");
         }
     }
 }

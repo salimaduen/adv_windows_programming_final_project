@@ -33,22 +33,24 @@
             this.btnEmployes = new System.Windows.Forms.Button();
             this.btnAuthors = new System.Windows.Forms.Button();
             this.btnStores = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnTitles
             // 
             this.btnTitles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTitles.Location = new System.Drawing.Point(57, 69);
+            this.btnTitles.Location = new System.Drawing.Point(57, 90);
             this.btnTitles.Name = "btnTitles";
             this.btnTitles.Size = new System.Drawing.Size(183, 97);
             this.btnTitles.TabIndex = 0;
             this.btnTitles.Text = "Titles";
             this.btnTitles.UseVisualStyleBackColor = true;
+            this.btnTitles.Click += new System.EventHandler(this.btnTitles_Click);
             // 
             // btnPublisher
             // 
             this.btnPublisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPublisher.Location = new System.Drawing.Point(57, 230);
+            this.btnPublisher.Location = new System.Drawing.Point(57, 262);
             this.btnPublisher.Name = "btnPublisher";
             this.btnPublisher.Size = new System.Drawing.Size(183, 97);
             this.btnPublisher.TabIndex = 2;
@@ -58,7 +60,7 @@
             // btnEmployes
             // 
             this.btnEmployes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployes.Location = new System.Drawing.Point(296, 154);
+            this.btnEmployes.Location = new System.Drawing.Point(300, 181);
             this.btnEmployes.Name = "btnEmployes";
             this.btnEmployes.Size = new System.Drawing.Size(183, 97);
             this.btnEmployes.TabIndex = 3;
@@ -68,7 +70,7 @@
             // btnAuthors
             // 
             this.btnAuthors.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAuthors.Location = new System.Drawing.Point(530, 69);
+            this.btnAuthors.Location = new System.Drawing.Point(530, 90);
             this.btnAuthors.Name = "btnAuthors";
             this.btnAuthors.Size = new System.Drawing.Size(183, 97);
             this.btnAuthors.TabIndex = 1;
@@ -78,18 +80,30 @@
             // btnStores
             // 
             this.btnStores.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStores.Location = new System.Drawing.Point(530, 230);
+            this.btnStores.Location = new System.Drawing.Point(530, 262);
             this.btnStores.Name = "btnStores";
             this.btnStores.Size = new System.Drawing.Size(183, 97);
             this.btnStores.TabIndex = 4;
             this.btnStores.Text = "Stores";
             this.btnStores.UseVisualStyleBackColor = true;
             // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(12, 12);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(53, 36);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.Text = "<--";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Maintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 407);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnStores);
             this.Controls.Add(this.btnAuthors);
             this.Controls.Add(this.btnEmployes);
@@ -108,5 +122,6 @@
         private System.Windows.Forms.Button btnEmployes;
         private System.Windows.Forms.Button btnAuthors;
         private System.Windows.Forms.Button btnStores;
+        private System.Windows.Forms.Button btnBack;
     }
 }

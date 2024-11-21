@@ -159,6 +159,7 @@
             this.btnExit.TabIndex = 11;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnPurchase
             // 
@@ -169,6 +170,7 @@
             this.btnPurchase.TabIndex = 12;
             this.btnPurchase.Text = "Purchase";
             this.btnPurchase.UseVisualStyleBackColor = true;
+            this.btnPurchase.Click += new System.EventHandler(this.btnPurchase_Click);
             // 
             // OrderCart
             // 
@@ -189,7 +191,7 @@
             this.Controls.Add(this.lstCart);
             this.Controls.Add(this.lstBooksToOrder);
             this.Name = "OrderCart";
-            this.Text = "OrderCart";
+            this.Text = "Order Cart";
             this.ResumeLayout(false);
             this.PerformLayout();
 

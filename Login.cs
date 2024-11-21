@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace Final_Project
 {
-    public partial class EnterProductScreen : Form
+    public partial class frmLogin : Form
     {
-        public EnterProductScreen()
+        public frmLogin()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show(this);
+
+            this.Hide(); 
         }
     }
 }

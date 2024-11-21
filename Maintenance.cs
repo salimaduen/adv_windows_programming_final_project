@@ -16,5 +16,19 @@ namespace Final_Project
         {
             InitializeComponent();
         }
+
+        private void btnTitles_Click(object sender, EventArgs e)
+        {
+            ProductScreen productScreen = new ProductScreen();
+            productScreen.Show();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
+
+            this.Close();
+        }
     }
 }
