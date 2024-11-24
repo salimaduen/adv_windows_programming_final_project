@@ -40,19 +40,22 @@
             // lstReport
             // 
             this.lstReport.FormattingEnabled = true;
-            this.lstReport.Location = new System.Drawing.Point(12, 108);
+            this.lstReport.ItemHeight = 16;
+            this.lstReport.Location = new System.Drawing.Point(16, 133);
+            this.lstReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstReport.Name = "lstReport";
             this.lstReport.ScrollAlwaysVisible = true;
-            this.lstReport.Size = new System.Drawing.Size(776, 290);
+            this.lstReport.Size = new System.Drawing.Size(1033, 356);
             this.lstReport.TabIndex = 10;
             // 
             // lblFrom
             // 
             this.lblFrom.AutoSize = true;
             this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrom.Location = new System.Drawing.Point(29, 44);
+            this.lblFrom.Location = new System.Drawing.Point(39, 54);
+            this.lblFrom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(46, 20);
+            this.lblFrom.Size = new System.Drawing.Size(57, 25);
             this.lblFrom.TabIndex = 11;
             this.lblFrom.Text = "From";
             // 
@@ -60,44 +63,49 @@
             // 
             this.lblTo.AutoSize = true;
             this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTo.Location = new System.Drawing.Point(277, 44);
+            this.lblTo.Location = new System.Drawing.Point(369, 54);
+            this.lblTo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(27, 20);
+            this.lblTo.Size = new System.Drawing.Size(36, 25);
             this.lblTo.TabIndex = 12;
             this.lblTo.Text = "To";
             // 
             // mtxtFrom
             // 
-            this.mtxtFrom.Location = new System.Drawing.Point(90, 46);
+            this.mtxtFrom.Location = new System.Drawing.Point(120, 57);
+            this.mtxtFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mtxtFrom.Mask = "00/00/0000";
             this.mtxtFrom.Name = "mtxtFrom";
-            this.mtxtFrom.Size = new System.Drawing.Size(131, 20);
+            this.mtxtFrom.Size = new System.Drawing.Size(173, 22);
             this.mtxtFrom.TabIndex = 13;
             this.mtxtFrom.ValidatingType = typeof(System.DateTime);
             // 
             // mtxtTo
             // 
-            this.mtxtTo.Location = new System.Drawing.Point(320, 44);
+            this.mtxtTo.Location = new System.Drawing.Point(427, 54);
+            this.mtxtTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mtxtTo.Mask = "00/00/0000";
             this.mtxtTo.Name = "mtxtTo";
-            this.mtxtTo.Size = new System.Drawing.Size(131, 20);
+            this.mtxtTo.Size = new System.Drawing.Size(173, 22);
             this.mtxtTo.TabIndex = 14;
             this.mtxtTo.ValidatingType = typeof(System.DateTime);
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(505, 43);
+            this.btnApply.Location = new System.Drawing.Point(673, 53);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(75, 23);
+            this.btnApply.Size = new System.Drawing.Size(100, 28);
             this.btnApply.TabIndex = 15;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(713, 41);
+            this.btnExit.Location = new System.Drawing.Point(951, 50);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(100, 28);
             this.btnExit.TabIndex = 16;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -105,9 +113,9 @@
             // 
             // Report
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 407);
+            this.ClientSize = new System.Drawing.Size(1067, 501);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.mtxtTo);
@@ -115,6 +123,8 @@
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.lblFrom);
             this.Controls.Add(this.lstReport);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Report";
             this.Text = "Report";
             this.ResumeLayout(false);
