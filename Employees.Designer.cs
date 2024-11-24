@@ -31,35 +31,35 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.txtPublishedDate = new System.Windows.Forms.TextBox();
-            this.txtYTDSales = new System.Windows.Forms.TextBox();
-            this.txtRoyalty = new System.Windows.Forms.TextBox();
-            this.txtAdvance = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.txtPublisherID = new System.Windows.Forms.TextBox();
-            this.txtType = new System.Windows.Forms.TextBox();
-            this.txtTitleID = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblRoyalty = new System.Windows.Forms.Label();
-            this.lblytdSales = new System.Windows.Forms.Label();
+            this.txtHireDate = new System.Windows.Forms.TextBox();
+            this.txtPubId = new System.Windows.Forms.TextBox();
+            this.txtJobLevel = new System.Windows.Forms.TextBox();
+            this.txtJobId = new System.Windows.Forms.TextBox();
+            this.txtLName = new System.Windows.Forms.TextBox();
+            this.txtMInitial = new System.Windows.Forms.TextBox();
+            this.txtFName = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.lblPubId = new System.Windows.Forms.Label();
             this.lblNotes = new System.Windows.Forms.Label();
-            this.lblPubDate = new System.Windows.Forms.Label();
-            this.lblAdvance = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.lblPublisherID = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.lblPhone = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
+            this.lblHireDate = new System.Windows.Forms.Label();
+            this.lblJobLevel = new System.Windows.Forms.Label();
+            this.lblJobId = new System.Windows.Forms.Label();
+            this.lblLName = new System.Windows.Forms.Label();
+            this.lblMInitial = new System.Windows.Forms.Label();
+            this.lblFName = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.lstEmployees = new System.Windows.Forms.ListBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRemove
             // 
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.Location = new System.Drawing.Point(898, 381);
+            this.btnRemove.Location = new System.Drawing.Point(1197, 469);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(100, 31);
+            this.btnRemove.Size = new System.Drawing.Size(133, 38);
             this.btnRemove.TabIndex = 107;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -67,229 +67,246 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(898, 29);
+            this.btnExit.Location = new System.Drawing.Point(1197, 36);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 31);
+            this.btnExit.Size = new System.Drawing.Size(133, 38);
             this.btnExit.TabIndex = 106;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(69, 547);
+            this.txtNotes.Location = new System.Drawing.Point(92, 673);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(948, 20);
+            this.txtNotes.Size = new System.Drawing.Size(1263, 22);
             this.txtNotes.TabIndex = 105;
             // 
-            // txtPublishedDate
+            // txtHireDate
             // 
-            this.txtPublishedDate.Location = new System.Drawing.Point(917, 484);
-            this.txtPublishedDate.Name = "txtPublishedDate";
-            this.txtPublishedDate.Size = new System.Drawing.Size(100, 20);
-            this.txtPublishedDate.TabIndex = 104;
+            this.txtHireDate.Location = new System.Drawing.Point(1082, 596);
+            this.txtHireDate.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHireDate.Name = "txtHireDate";
+            this.txtHireDate.Size = new System.Drawing.Size(132, 22);
+            this.txtHireDate.TabIndex = 104;
             // 
-            // txtYTDSales
+            // txtPubId
             // 
-            this.txtYTDSales.Location = new System.Drawing.Point(811, 484);
-            this.txtYTDSales.Name = "txtYTDSales";
-            this.txtYTDSales.Size = new System.Drawing.Size(100, 20);
-            this.txtYTDSales.TabIndex = 103;
+            this.txtPubId.Location = new System.Drawing.Point(940, 596);
+            this.txtPubId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPubId.Name = "txtPubId";
+            this.txtPubId.Size = new System.Drawing.Size(132, 22);
+            this.txtPubId.TabIndex = 102;
             // 
-            // txtRoyalty
+            // txtJobLevel
             // 
-            this.txtRoyalty.Location = new System.Drawing.Point(705, 484);
-            this.txtRoyalty.Name = "txtRoyalty";
-            this.txtRoyalty.Size = new System.Drawing.Size(100, 20);
-            this.txtRoyalty.TabIndex = 102;
+            this.txtJobLevel.Location = new System.Drawing.Point(799, 596);
+            this.txtJobLevel.Margin = new System.Windows.Forms.Padding(4);
+            this.txtJobLevel.Name = "txtJobLevel";
+            this.txtJobLevel.Size = new System.Drawing.Size(132, 22);
+            this.txtJobLevel.TabIndex = 101;
             // 
-            // txtAdvance
+            // txtJobId
             // 
-            this.txtAdvance.Location = new System.Drawing.Point(599, 484);
-            this.txtAdvance.Name = "txtAdvance";
-            this.txtAdvance.Size = new System.Drawing.Size(100, 20);
-            this.txtAdvance.TabIndex = 101;
+            this.txtJobId.Location = new System.Drawing.Point(657, 596);
+            this.txtJobId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtJobId.Name = "txtJobId";
+            this.txtJobId.Size = new System.Drawing.Size(132, 22);
+            this.txtJobId.TabIndex = 100;
             // 
-            // txtPrice
+            // txtLName
             // 
-            this.txtPrice.Location = new System.Drawing.Point(493, 484);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtPrice.TabIndex = 100;
+            this.txtLName.Location = new System.Drawing.Point(516, 596);
+            this.txtLName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLName.Name = "txtLName";
+            this.txtLName.Size = new System.Drawing.Size(132, 22);
+            this.txtLName.TabIndex = 99;
             // 
-            // txtPublisherID
+            // txtMInitial
             // 
-            this.txtPublisherID.Location = new System.Drawing.Point(387, 484);
-            this.txtPublisherID.Name = "txtPublisherID";
-            this.txtPublisherID.Size = new System.Drawing.Size(100, 20);
-            this.txtPublisherID.TabIndex = 99;
+            this.txtMInitial.Location = new System.Drawing.Point(375, 596);
+            this.txtMInitial.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMInitial.Name = "txtMInitial";
+            this.txtMInitial.Size = new System.Drawing.Size(132, 22);
+            this.txtMInitial.TabIndex = 98;
             // 
-            // txtType
+            // txtFName
             // 
-            this.txtType.Location = new System.Drawing.Point(281, 484);
-            this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(100, 20);
-            this.txtType.TabIndex = 98;
+            this.txtFName.Location = new System.Drawing.Point(233, 596);
+            this.txtFName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFName.Name = "txtFName";
+            this.txtFName.Size = new System.Drawing.Size(132, 22);
+            this.txtFName.TabIndex = 97;
             // 
-            // txtTitleID
+            // txtId
             // 
-            this.txtTitleID.Location = new System.Drawing.Point(175, 484);
-            this.txtTitleID.Name = "txtTitleID";
-            this.txtTitleID.Size = new System.Drawing.Size(100, 20);
-            this.txtTitleID.TabIndex = 97;
+            this.txtId.Location = new System.Drawing.Point(92, 596);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(132, 22);
+            this.txtId.TabIndex = 96;
             // 
-            // txtName
+            // lblPubId
             // 
-            this.txtName.Location = new System.Drawing.Point(69, 484);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 96;
-            // 
-            // lblRoyalty
-            // 
-            this.lblRoyalty.AutoSize = true;
-            this.lblRoyalty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoyalty.Location = new System.Drawing.Point(701, 451);
-            this.lblRoyalty.Name = "lblRoyalty";
-            this.lblRoyalty.Size = new System.Drawing.Size(61, 20);
-            this.lblRoyalty.TabIndex = 95;
-            this.lblRoyalty.Text = "Royalty";
-            // 
-            // lblytdSales
-            // 
-            this.lblytdSales.AutoSize = true;
-            this.lblytdSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblytdSales.Location = new System.Drawing.Point(807, 451);
-            this.lblytdSales.Name = "lblytdSales";
-            this.lblytdSales.Size = new System.Drawing.Size(85, 20);
-            this.lblytdSales.TabIndex = 94;
-            this.lblytdSales.Text = "YTD Sales";
+            this.lblPubId.AutoSize = true;
+            this.lblPubId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPubId.Location = new System.Drawing.Point(935, 555);
+            this.lblPubId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPubId.Name = "lblPubId";
+            this.lblPubId.Size = new System.Drawing.Size(68, 25);
+            this.lblPubId.TabIndex = 95;
+            this.lblPubId.Text = "Pub Id";
             // 
             // lblNotes
             // 
             this.lblNotes.AutoSize = true;
             this.lblNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotes.Location = new System.Drawing.Point(69, 524);
+            this.lblNotes.Location = new System.Drawing.Point(92, 645);
+            this.lblNotes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(55, 20);
+            this.lblNotes.Size = new System.Drawing.Size(69, 25);
             this.lblNotes.TabIndex = 93;
             this.lblNotes.Text = "Notes:";
             // 
-            // lblPubDate
+            // lblHireDate
             // 
-            this.lblPubDate.AutoSize = true;
-            this.lblPubDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPubDate.Location = new System.Drawing.Point(913, 451);
-            this.lblPubDate.Name = "lblPubDate";
-            this.lblPubDate.Size = new System.Drawing.Size(117, 20);
-            this.lblPubDate.TabIndex = 92;
-            this.lblPubDate.Text = "Published Date";
+            this.lblHireDate.AutoSize = true;
+            this.lblHireDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHireDate.Location = new System.Drawing.Point(1076, 555);
+            this.lblHireDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHireDate.Name = "lblHireDate";
+            this.lblHireDate.Size = new System.Drawing.Size(93, 25);
+            this.lblHireDate.TabIndex = 92;
+            this.lblHireDate.Text = "Hire Date";
             // 
-            // lblAdvance
+            // lblJobLevel
             // 
-            this.lblAdvance.AutoSize = true;
-            this.lblAdvance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdvance.Location = new System.Drawing.Point(595, 451);
-            this.lblAdvance.Name = "lblAdvance";
-            this.lblAdvance.Size = new System.Drawing.Size(71, 20);
-            this.lblAdvance.TabIndex = 91;
-            this.lblAdvance.Text = "Advance";
+            this.lblJobLevel.AutoSize = true;
+            this.lblJobLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJobLevel.Location = new System.Drawing.Point(793, 555);
+            this.lblJobLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblJobLevel.Name = "lblJobLevel";
+            this.lblJobLevel.Size = new System.Drawing.Size(97, 25);
+            this.lblJobLevel.TabIndex = 91;
+            this.lblJobLevel.Text = "Job Level";
             // 
-            // lblPrice
+            // lblJobId
             // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(489, 451);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(44, 20);
-            this.lblPrice.TabIndex = 90;
-            this.lblPrice.Text = "Price";
+            this.lblJobId.AutoSize = true;
+            this.lblJobId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJobId.Location = new System.Drawing.Point(652, 555);
+            this.lblJobId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblJobId.Name = "lblJobId";
+            this.lblJobId.Size = new System.Drawing.Size(69, 25);
+            this.lblJobId.TabIndex = 90;
+            this.lblJobId.Text = "Job ID";
             // 
-            // lblPublisherID
+            // lblLName
             // 
-            this.lblPublisherID.AutoSize = true;
-            this.lblPublisherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPublisherID.Location = new System.Drawing.Point(383, 451);
-            this.lblPublisherID.Name = "lblPublisherID";
-            this.lblPublisherID.Size = new System.Drawing.Size(95, 20);
-            this.lblPublisherID.TabIndex = 89;
-            this.lblPublisherID.Text = "Publisher ID";
+            this.lblLName.AutoSize = true;
+            this.lblLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLName.Location = new System.Drawing.Point(511, 555);
+            this.lblLName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLName.Name = "lblLName";
+            this.lblLName.Size = new System.Drawing.Size(106, 25);
+            this.lblLName.TabIndex = 89;
+            this.lblLName.Text = "Last Name";
             // 
-            // lblType
+            // lblMInitial
             // 
-            this.lblType.AutoSize = true;
-            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(277, 451);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(43, 20);
-            this.lblType.TabIndex = 88;
-            this.lblType.Text = "Type";
+            this.lblMInitial.AutoSize = true;
+            this.lblMInitial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMInitial.Location = new System.Drawing.Point(369, 555);
+            this.lblMInitial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMInitial.Name = "lblMInitial";
+            this.lblMInitial.Size = new System.Drawing.Size(119, 25);
+            this.lblMInitial.TabIndex = 88;
+            this.lblMInitial.Text = "Middle Initial";
             // 
-            // lblPhone
+            // lblFName
             // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(171, 451);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(59, 20);
-            this.lblPhone.TabIndex = 87;
-            this.lblPhone.Text = "Title ID";
+            this.lblFName.AutoSize = true;
+            this.lblFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFName.Location = new System.Drawing.Point(228, 555);
+            this.lblFName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFName.Name = "lblFName";
+            this.lblFName.Size = new System.Drawing.Size(106, 25);
+            this.lblFName.TabIndex = 87;
+            this.lblFName.Text = "First Name";
             // 
-            // lblName
+            // lblId
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(65, 451);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(51, 20);
-            this.lblName.TabIndex = 86;
-            this.lblName.Text = "Name";
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.Location = new System.Drawing.Point(87, 555);
+            this.lblId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(31, 25);
+            this.lblId.TabIndex = 86;
+            this.lblId.Text = "ID";
             // 
             // txtSearchBar
             // 
-            this.txtSearchBar.Location = new System.Drawing.Point(69, 41);
+            this.txtSearchBar.Location = new System.Drawing.Point(92, 50);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(304, 20);
+            this.txtSearchBar.Size = new System.Drawing.Size(404, 22);
             this.txtSearchBar.TabIndex = 85;
-            this.txtSearchBar.Text = "Search For Book";
+            this.txtSearchBar.Text = "Search For Employee";
             // 
             // lstEmployees
             // 
             this.lstEmployees.FormattingEnabled = true;
-            this.lstEmployees.Location = new System.Drawing.Point(69, 71);
+            this.lstEmployees.ItemHeight = 16;
+            this.lstEmployees.Location = new System.Drawing.Point(92, 87);
+            this.lstEmployees.Margin = new System.Windows.Forms.Padding(4);
             this.lstEmployees.Name = "lstEmployees";
             this.lstEmployees.ScrollAlwaysVisible = true;
-            this.lstEmployees.Size = new System.Drawing.Size(929, 290);
+            this.lstEmployees.Size = new System.Drawing.Size(1237, 356);
             this.lstEmployees.TabIndex = 84;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(1047, 469);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(133, 38);
+            this.btnAdd.TabIndex = 108;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // Employees
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 597);
+            this.ClientSize = new System.Drawing.Size(1460, 775);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtNotes);
-            this.Controls.Add(this.txtPublishedDate);
-            this.Controls.Add(this.txtYTDSales);
-            this.Controls.Add(this.txtRoyalty);
-            this.Controls.Add(this.txtAdvance);
-            this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.txtPublisherID);
-            this.Controls.Add(this.txtType);
-            this.Controls.Add(this.txtTitleID);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.lblRoyalty);
-            this.Controls.Add(this.lblytdSales);
+            this.Controls.Add(this.txtHireDate);
+            this.Controls.Add(this.txtPubId);
+            this.Controls.Add(this.txtJobLevel);
+            this.Controls.Add(this.txtJobId);
+            this.Controls.Add(this.txtLName);
+            this.Controls.Add(this.txtMInitial);
+            this.Controls.Add(this.txtFName);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.lblPubId);
             this.Controls.Add(this.lblNotes);
-            this.Controls.Add(this.lblPubDate);
-            this.Controls.Add(this.lblAdvance);
-            this.Controls.Add(this.lblPrice);
-            this.Controls.Add(this.lblPublisherID);
-            this.Controls.Add(this.lblType);
-            this.Controls.Add(this.lblPhone);
-            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblHireDate);
+            this.Controls.Add(this.lblJobLevel);
+            this.Controls.Add(this.lblJobId);
+            this.Controls.Add(this.lblLName);
+            this.Controls.Add(this.lblMInitial);
+            this.Controls.Add(this.lblFName);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.lstEmployees);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Employees";
             this.Text = "Employees";
             this.ResumeLayout(false);
@@ -302,26 +319,25 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TextBox txtNotes;
-        private System.Windows.Forms.TextBox txtPublishedDate;
-        private System.Windows.Forms.TextBox txtYTDSales;
-        private System.Windows.Forms.TextBox txtRoyalty;
-        private System.Windows.Forms.TextBox txtAdvance;
-        private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.TextBox txtPublisherID;
-        private System.Windows.Forms.TextBox txtType;
-        private System.Windows.Forms.TextBox txtTitleID;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label lblRoyalty;
-        private System.Windows.Forms.Label lblytdSales;
+        private System.Windows.Forms.TextBox txtHireDate;
+        private System.Windows.Forms.TextBox txtPubId;
+        private System.Windows.Forms.TextBox txtJobLevel;
+        private System.Windows.Forms.TextBox txtJobId;
+        private System.Windows.Forms.TextBox txtLName;
+        private System.Windows.Forms.TextBox txtMInitial;
+        private System.Windows.Forms.TextBox txtFName;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label lblPubId;
         private System.Windows.Forms.Label lblNotes;
-        private System.Windows.Forms.Label lblPubDate;
-        private System.Windows.Forms.Label lblAdvance;
-        private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Label lblPublisherID;
-        private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.Label lblPhone;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblHireDate;
+        private System.Windows.Forms.Label lblJobLevel;
+        private System.Windows.Forms.Label lblJobId;
+        private System.Windows.Forms.Label lblLName;
+        private System.Windows.Forms.Label lblMInitial;
+        private System.Windows.Forms.Label lblFName;
+        private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.TextBox txtSearchBar;
         private System.Windows.Forms.ListBox lstEmployees;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
