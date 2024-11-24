@@ -30,5 +30,29 @@ namespace Final_Project
 
             this.Close();
         }
+
+        private void btnAuthors_Click(object sender, EventArgs e)
+        {
+            Author authorsForm = new Author();
+            authorsForm.Show(); 
+        }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            Employees employeesForm = new Employees();
+            employeesForm.Show();
+        }
+
+        private void btnStores_Click(object sender, EventArgs e)
+        {
+            Stores storesForm = new Stores();
+            storesForm.Show();
+        }
+
+        private void btnPublisher_Click(object sender, EventArgs e)
+        {
+            Publishers publisherForm = new Publishers();
+            publisherForm.Show();
+        }
     }
 }

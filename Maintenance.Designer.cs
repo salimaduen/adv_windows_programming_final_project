@@ -30,7 +30,7 @@
         {
             this.btnTitles = new System.Windows.Forms.Button();
             this.btnPublisher = new System.Windows.Forms.Button();
-            this.btnEmployes = new System.Windows.Forms.Button();
+            this.btnEmployees = new System.Windows.Forms.Button();
             this.btnAuthors = new System.Windows.Forms.Button();
             this.btnStores = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
@@ -56,16 +56,18 @@
             this.btnPublisher.TabIndex = 2;
             this.btnPublisher.Text = "Publisher";
             this.btnPublisher.UseVisualStyleBackColor = true;
+            this.btnPublisher.Click += new System.EventHandler(this.btnPublisher_Click);
             // 
-            // btnEmployes
+            // btnEmployees
             // 
-            this.btnEmployes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployes.Location = new System.Drawing.Point(300, 181);
-            this.btnEmployes.Name = "btnEmployes";
-            this.btnEmployes.Size = new System.Drawing.Size(183, 97);
-            this.btnEmployes.TabIndex = 3;
-            this.btnEmployes.Text = "Employes";
-            this.btnEmployes.UseVisualStyleBackColor = true;
+            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.Location = new System.Drawing.Point(300, 181);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(183, 97);
+            this.btnEmployees.TabIndex = 3;
+            this.btnEmployees.Text = "Employees";
+            this.btnEmployees.UseVisualStyleBackColor = true;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // btnAuthors
             // 
@@ -76,6 +78,7 @@
             this.btnAuthors.TabIndex = 1;
             this.btnAuthors.Text = "Authors";
             this.btnAuthors.UseVisualStyleBackColor = true;
+            this.btnAuthors.Click += new System.EventHandler(this.btnAuthors_Click);
             // 
             // btnStores
             // 
@@ -86,6 +89,7 @@
             this.btnStores.TabIndex = 4;
             this.btnStores.Text = "Stores";
             this.btnStores.UseVisualStyleBackColor = true;
+            this.btnStores.Click += new System.EventHandler(this.btnStores_Click);
             // 
             // btnBack
             // 
@@ -106,7 +110,7 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnStores);
             this.Controls.Add(this.btnAuthors);
-            this.Controls.Add(this.btnEmployes);
+            this.Controls.Add(this.btnEmployees);
             this.Controls.Add(this.btnPublisher);
             this.Controls.Add(this.btnTitles);
             this.Name = "Maintenance";
@@ -119,7 +123,7 @@
 
         private System.Windows.Forms.Button btnTitles;
         private System.Windows.Forms.Button btnPublisher;
-        private System.Windows.Forms.Button btnEmployes;
+        private System.Windows.Forms.Button btnEmployees;
         private System.Windows.Forms.Button btnAuthors;
         private System.Windows.Forms.Button btnStores;
         private System.Windows.Forms.Button btnBack;
