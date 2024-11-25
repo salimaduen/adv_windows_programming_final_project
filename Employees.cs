@@ -37,6 +37,7 @@ namespace Final_Project
 
             string newText = currentText + newChar;
 
+            // Pattern needs improvement
             string pattern = @"^[A-Z]{0,3}[1-9]?[0-9]{0,4}(FM?)?$|^[A-Z]-[A-Z][1-9]?[0-9]{0,4}(FM?)?$";
 
             if (!Regex.IsMatch(newText, pattern))
