@@ -30,14 +30,12 @@
         {
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.txtNotes = new System.Windows.Forms.TextBox();
             this.txtZip = new System.Windows.Forms.TextBox();
             this.txtState = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtStoreAddress = new System.Windows.Forms.TextBox();
             this.txtStoreName = new System.Windows.Forms.TextBox();
             this.txtStoreId = new System.Windows.Forms.TextBox();
-            this.lblNotes = new System.Windows.Forms.Label();
             this.lblZip = new System.Windows.Forms.Label();
             this.lblState = new System.Windows.Forms.Label();
             this.lblCity = new System.Windows.Forms.Label();
@@ -69,16 +67,10 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // txtNotes
-            // 
-            this.txtNotes.Location = new System.Drawing.Point(66, 551);
-            this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(948, 20);
-            this.txtNotes.TabIndex = 105;
-            // 
             // txtZip
             // 
             this.txtZip.Location = new System.Drawing.Point(596, 488);
+            this.txtZip.MaxLength = 5;
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(100, 20);
             this.txtZip.TabIndex = 101;
@@ -86,6 +78,7 @@
             // txtState
             // 
             this.txtState.Location = new System.Drawing.Point(490, 488);
+            this.txtState.MaxLength = 2;
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(100, 20);
             this.txtState.TabIndex = 100;
@@ -93,6 +86,7 @@
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(384, 488);
+            this.txtCity.MaxLength = 20;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(100, 20);
             this.txtCity.TabIndex = 99;
@@ -100,6 +94,7 @@
             // txtStoreAddress
             // 
             this.txtStoreAddress.Location = new System.Drawing.Point(278, 488);
+            this.txtStoreAddress.MaxLength = 40;
             this.txtStoreAddress.Name = "txtStoreAddress";
             this.txtStoreAddress.Size = new System.Drawing.Size(100, 20);
             this.txtStoreAddress.TabIndex = 98;
@@ -107,6 +102,7 @@
             // txtStoreName
             // 
             this.txtStoreName.Location = new System.Drawing.Point(172, 488);
+            this.txtStoreName.MaxLength = 40;
             this.txtStoreName.Name = "txtStoreName";
             this.txtStoreName.Size = new System.Drawing.Size(100, 20);
             this.txtStoreName.TabIndex = 97;
@@ -114,19 +110,10 @@
             // txtStoreId
             // 
             this.txtStoreId.Location = new System.Drawing.Point(66, 488);
+            this.txtStoreId.MaxLength = 4;
             this.txtStoreId.Name = "txtStoreId";
             this.txtStoreId.Size = new System.Drawing.Size(100, 20);
             this.txtStoreId.TabIndex = 96;
-            // 
-            // lblNotes
-            // 
-            this.lblNotes.AutoSize = true;
-            this.lblNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotes.Location = new System.Drawing.Point(66, 528);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(55, 20);
-            this.lblNotes.TabIndex = 93;
-            this.lblNotes.Text = "Notes:";
             // 
             // lblZip
             // 
@@ -134,7 +121,7 @@
             this.lblZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblZip.Location = new System.Drawing.Point(592, 455);
             this.lblZip.Name = "lblZip";
-            this.lblZip.Size = new System.Drawing.Size(31, 20);
+            this.lblZip.Size = new System.Drawing.Size(39, 25);
             this.lblZip.TabIndex = 91;
             this.lblZip.Text = "Zip";
             // 
@@ -144,7 +131,7 @@
             this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblState.Location = new System.Drawing.Point(486, 455);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(48, 20);
+            this.lblState.Size = new System.Drawing.Size(58, 25);
             this.lblState.TabIndex = 90;
             this.lblState.Text = "State";
             // 
@@ -154,7 +141,7 @@
             this.lblCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCity.Location = new System.Drawing.Point(380, 455);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(35, 20);
+            this.lblCity.Size = new System.Drawing.Size(46, 25);
             this.lblCity.TabIndex = 89;
             this.lblCity.Text = "City";
             // 
@@ -164,7 +151,7 @@
             this.lblStoreAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreAddress.Location = new System.Drawing.Point(274, 455);
             this.lblStoreAddress.Name = "lblStoreAddress";
-            this.lblStoreAddress.Size = new System.Drawing.Size(111, 20);
+            this.lblStoreAddress.Size = new System.Drawing.Size(137, 25);
             this.lblStoreAddress.TabIndex = 88;
             this.lblStoreAddress.Text = "Store Address";
             // 
@@ -174,7 +161,7 @@
             this.lblStoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreName.Location = new System.Drawing.Point(168, 455);
             this.lblStoreName.Name = "lblStoreName";
-            this.lblStoreName.Size = new System.Drawing.Size(94, 20);
+            this.lblStoreName.Size = new System.Drawing.Size(116, 25);
             this.lblStoreName.TabIndex = 87;
             this.lblStoreName.Text = "Store Name";
             // 
@@ -184,7 +171,7 @@
             this.lblStoreId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreId.Location = new System.Drawing.Point(62, 455);
             this.lblStoreId.Name = "lblStoreId";
-            this.lblStoreId.Size = new System.Drawing.Size(69, 20);
+            this.lblStoreId.Size = new System.Drawing.Size(83, 25);
             this.lblStoreId.TabIndex = 86;
             this.lblStoreId.Text = "Store ID";
             // 
@@ -223,14 +210,12 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.txtZip);
             this.Controls.Add(this.txtState);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.txtStoreAddress);
             this.Controls.Add(this.txtStoreName);
             this.Controls.Add(this.txtStoreId);
-            this.Controls.Add(this.lblNotes);
             this.Controls.Add(this.lblZip);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.lblCity);
@@ -251,14 +236,12 @@
 
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.TextBox txtZip;
         private System.Windows.Forms.TextBox txtState;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtStoreAddress;
         private System.Windows.Forms.TextBox txtStoreName;
         private System.Windows.Forms.TextBox txtStoreId;
-        private System.Windows.Forms.Label lblNotes;
         private System.Windows.Forms.Label lblZip;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.Label lblCity;
