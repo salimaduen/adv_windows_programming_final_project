@@ -16,7 +16,17 @@ namespace Final_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new Form1());
+            using (frmLogin loginForm = new frmLogin())
+            {
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    Application.Run(new frmMainMenu());
+                } else
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }

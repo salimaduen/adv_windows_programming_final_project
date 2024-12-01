@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +58,155 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="author.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookStoreModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStoreModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookStoreModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookStoreModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStoreModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="discount.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="employee.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAuthors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAuthors.Designer.cs">
+      <DependentUpon>frmAuthors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmployees.Designer.cs">
+      <DependentUpon>frmEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainMenu.Designer.cs">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintenance.Designer.cs">
+      <DependentUpon>frmMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOrderCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrderCart.Designer.cs">
+      <DependentUpon>frmOrderCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPublisher.Designer.cs">
+      <DependentUpon>frmPublisher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReports.Designer.cs">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchTitles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchTitles.Designer.cs">
+      <DependentUpon>frmSearchTitles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStores.Designer.cs">
+      <DependentUpon>frmStores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSummary.Designer.cs">
+      <DependentUpon>frmSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="job.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="publisher.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pub_info.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reptq1_Result.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reptq2_Result.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reptq3_Result.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="roysched.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sale.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="store.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="title.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="titleauthor.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="titleview.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmAuthors.resx">
+      <DependentUpon>frmAuthors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmployees.resx">
+      <DependentUpon>frmEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainMenu.resx">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintenance.resx">
+      <DependentUpon>frmMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +216,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="BookStoreModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BookStoreModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BookStoreModel.edmx.diagram">
+      <DependentUpon>BookStoreModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,5 +237,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="BookStoreModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BookStoreModel.edmx</DependentUpon>
+      <LastGenOutput>BookStoreModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BookStoreModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BookStoreModel.edmx</DependentUpon>
+      <LastGenOutput>BookStoreModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>
