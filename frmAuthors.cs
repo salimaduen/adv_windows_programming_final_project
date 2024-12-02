@@ -221,7 +221,6 @@ namespace Final_Project
             }
         }
 
-
         private void ClearInputFields()
         {
             txtId.Text = "";

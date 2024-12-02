@@ -28,25 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstReport = new System.Windows.Forms.ListBox();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
-            this.mtxtFrom = new System.Windows.Forms.MaskedTextBox();
-            this.mtxtTo = new System.Windows.Forms.MaskedTextBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dgvReport = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lstReport
-            // 
-            this.lstReport.FormattingEnabled = true;
-            this.lstReport.ItemHeight = 16;
-            this.lstReport.Location = new System.Drawing.Point(16, 133);
-            this.lstReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lstReport.Name = "lstReport";
-            this.lstReport.ScrollAlwaysVisible = true;
-            this.lstReport.Size = new System.Drawing.Size(1033, 356);
-            this.lstReport.TabIndex = 10;
             // 
             // lblFrom
             // 
@@ -70,75 +60,85 @@
             this.lblTo.TabIndex = 12;
             this.lblTo.Text = "To";
             // 
-            // mtxtFrom
-            // 
-            this.mtxtFrom.Location = new System.Drawing.Point(120, 57);
-            this.mtxtFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.mtxtFrom.Mask = "00/00/0000";
-            this.mtxtFrom.Name = "mtxtFrom";
-            this.mtxtFrom.Size = new System.Drawing.Size(173, 22);
-            this.mtxtFrom.TabIndex = 13;
-            this.mtxtFrom.ValidatingType = typeof(System.DateTime);
-            // 
-            // mtxtTo
-            // 
-            this.mtxtTo.Location = new System.Drawing.Point(427, 54);
-            this.mtxtTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.mtxtTo.Mask = "00/00/0000";
-            this.mtxtTo.Name = "mtxtTo";
-            this.mtxtTo.Size = new System.Drawing.Size(173, 22);
-            this.mtxtTo.TabIndex = 14;
-            this.mtxtTo.ValidatingType = typeof(System.DateTime);
-            // 
             // btnApply
             // 
             this.btnApply.Location = new System.Drawing.Point(673, 53);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(4);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(100, 28);
             this.btnApply.TabIndex = 15;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(951, 50);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Location = new System.Drawing.Point(1124, 51);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(100, 28);
             this.btnExit.TabIndex = 16;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // Report
+            // dtpFrom
+            // 
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(103, 59);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(173, 22);
+            this.dtpFrom.TabIndex = 17;
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(412, 57);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(173, 22);
+            this.dtpTo.TabIndex = 18;
+            // 
+            // dgvReport
+            // 
+            this.dgvReport.AllowUserToAddRows = false;
+            this.dgvReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReport.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReport.Location = new System.Drawing.Point(16, 97);
+            this.dgvReport.Name = "dgvReport";
+            this.dgvReport.RowHeadersWidth = 51;
+            this.dgvReport.RowTemplate.Height = 24;
+            this.dgvReport.Size = new System.Drawing.Size(1208, 666);
+            this.dgvReport.TabIndex = 19;
+            // 
+            // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 501);
+            this.ClientSize = new System.Drawing.Size(1273, 793);
+            this.Controls.Add(this.dgvReport);
+            this.Controls.Add(this.dtpTo);
+            this.Controls.Add(this.dtpFrom);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnApply);
-            this.Controls.Add(this.mtxtTo);
-            this.Controls.Add(this.mtxtFrom);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.lblFrom);
-            this.Controls.Add(this.lstReport);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Report";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "frmReports";
             this.Text = "Report";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lstReport;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblTo;
-        private System.Windows.Forms.MaskedTextBox mtxtFrom;
-        private System.Windows.Forms.MaskedTextBox mtxtTo;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.DataGridView dgvReport;
     }
 }
