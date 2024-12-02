@@ -53,5 +53,13 @@ namespace Final_Project
         {
             this.Close();
         }
+
+        private void btnTitles_Click(object sender, EventArgs e)
+        {
+            using (frmSearchTitles frmSearchTitles = new frmSearchTitles())
+            {
+                frmSearchTitles.ShowDialog();
+            }
+        }
     }
 }

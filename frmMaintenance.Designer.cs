@@ -45,6 +45,7 @@
             this.btnTitles.TabIndex = 0;
             this.btnTitles.Text = "Titles";
             this.btnTitles.UseVisualStyleBackColor = true;
+            this.btnTitles.Click += new System.EventHandler(this.btnTitles_Click);
             // 
             // btnPublisher
             // 

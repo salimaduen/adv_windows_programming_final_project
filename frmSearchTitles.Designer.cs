@@ -52,7 +52,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.lstBooksToAdd = new System.Windows.Forms.ListBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtPublishedDate = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // btnRemove
@@ -64,6 +64,7 @@
             this.btnRemove.TabIndex = 58;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAdd
             // 
@@ -74,6 +75,7 @@
             this.btnAdd.TabIndex = 57;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnExit
             // 
@@ -113,6 +115,7 @@
             this.txtAdvance.Name = "txtAdvance";
             this.txtAdvance.Size = new System.Drawing.Size(100, 20);
             this.txtAdvance.TabIndex = 51;
+            this.txtAdvance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalEditor);
             // 
             // txtPrice
             // 
@@ -120,6 +123,7 @@
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPrice.TabIndex = 50;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalEditor);
             // 
             // txtPublisherID
             // 
@@ -157,7 +161,7 @@
             this.lblRoyalty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRoyalty.Location = new System.Drawing.Point(645, 434);
             this.lblRoyalty.Name = "lblRoyalty";
-            this.lblRoyalty.Size = new System.Drawing.Size(76, 25);
+            this.lblRoyalty.Size = new System.Drawing.Size(61, 20);
             this.lblRoyalty.TabIndex = 45;
             this.lblRoyalty.Text = "Royalty";
             // 
@@ -167,7 +171,7 @@
             this.lblytdSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblytdSales.Location = new System.Drawing.Point(751, 434);
             this.lblytdSales.Name = "lblytdSales";
-            this.lblytdSales.Size = new System.Drawing.Size(107, 25);
+            this.lblytdSales.Size = new System.Drawing.Size(85, 20);
             this.lblytdSales.TabIndex = 44;
             this.lblytdSales.Text = "YTD Sales";
             // 
@@ -177,7 +181,7 @@
             this.lblNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNotes.Location = new System.Drawing.Point(13, 507);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(69, 25);
+            this.lblNotes.Size = new System.Drawing.Size(55, 20);
             this.lblNotes.TabIndex = 43;
             this.lblNotes.Text = "Notes:";
             // 
@@ -187,7 +191,7 @@
             this.lblPubDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPubDate.Location = new System.Drawing.Point(857, 434);
             this.lblPubDate.Name = "lblPubDate";
-            this.lblPubDate.Size = new System.Drawing.Size(144, 25);
+            this.lblPubDate.Size = new System.Drawing.Size(117, 20);
             this.lblPubDate.TabIndex = 42;
             this.lblPubDate.Text = "Published Date";
             // 
@@ -197,7 +201,7 @@
             this.lblAdvance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdvance.Location = new System.Drawing.Point(539, 434);
             this.lblAdvance.Name = "lblAdvance";
-            this.lblAdvance.Size = new System.Drawing.Size(90, 25);
+            this.lblAdvance.Size = new System.Drawing.Size(71, 20);
             this.lblAdvance.TabIndex = 41;
             this.lblAdvance.Text = "Advance";
             // 
@@ -207,7 +211,7 @@
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.Location = new System.Drawing.Point(433, 434);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(56, 25);
+            this.lblPrice.Size = new System.Drawing.Size(44, 20);
             this.lblPrice.TabIndex = 40;
             this.lblPrice.Text = "Price";
             // 
@@ -217,7 +221,7 @@
             this.lblPublisherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPublisherID.Location = new System.Drawing.Point(327, 434);
             this.lblPublisherID.Name = "lblPublisherID";
-            this.lblPublisherID.Size = new System.Drawing.Size(117, 25);
+            this.lblPublisherID.Size = new System.Drawing.Size(95, 20);
             this.lblPublisherID.TabIndex = 39;
             this.lblPublisherID.Text = "Publisher ID";
             // 
@@ -227,7 +231,7 @@
             this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(221, 434);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(57, 25);
+            this.lblType.Size = new System.Drawing.Size(43, 20);
             this.lblType.TabIndex = 38;
             this.lblType.Text = "Type";
             // 
@@ -237,7 +241,7 @@
             this.lblTitleID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleID.Location = new System.Drawing.Point(115, 434);
             this.lblTitleID.Name = "lblTitleID";
-            this.lblTitleID.Size = new System.Drawing.Size(73, 25);
+            this.lblTitleID.Size = new System.Drawing.Size(59, 20);
             this.lblTitleID.TabIndex = 37;
             this.lblTitleID.Text = "Title ID";
             // 
@@ -247,7 +251,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(9, 434);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(49, 25);
+            this.lblTitle.Size = new System.Drawing.Size(38, 20);
             this.lblTitle.TabIndex = 36;
             this.lblTitle.Text = "Title";
             // 
@@ -258,6 +262,7 @@
             this.txtSearchBar.Size = new System.Drawing.Size(304, 20);
             this.txtSearchBar.TabIndex = 35;
             this.txtSearchBar.Text = "Search For Book";
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
             // 
             // lstBooksToAdd
             // 
@@ -267,22 +272,23 @@
             this.lstBooksToAdd.ScrollAlwaysVisible = true;
             this.lstBooksToAdd.Size = new System.Drawing.Size(929, 290);
             this.lstBooksToAdd.TabIndex = 34;
+            this.lstBooksToAdd.SelectedIndexChanged += new System.EventHandler(this.lstTitles_SelectedIndexChanged);
             // 
-            // maskedTextBox1
+            // mtxtPublishedDate
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(861, 467);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 59;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.mtxtPublishedDate.Location = new System.Drawing.Point(861, 467);
+            this.mtxtPublishedDate.Mask = "00/00/0000";
+            this.mtxtPublishedDate.Name = "mtxtPublishedDate";
+            this.mtxtPublishedDate.Size = new System.Drawing.Size(100, 20);
+            this.mtxtPublishedDate.TabIndex = 59;
+            this.mtxtPublishedDate.ValidatingType = typeof(System.DateTime);
             // 
-            // ProductScreen
+            // frmSearchTitles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1021, 615);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.mtxtPublishedDate);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnExit);
@@ -308,7 +314,7 @@
             this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.lstBooksToAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "ProductScreen";
+            this.Name = "frmSearchTitles";
             this.Text = "Product Screen";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -341,6 +347,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtSearchBar;
         private System.Windows.Forms.ListBox lstBooksToAdd;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtxtPublishedDate;
     }
 }

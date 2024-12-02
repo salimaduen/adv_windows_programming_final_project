@@ -54,6 +54,7 @@
             this.btnRemove.TabIndex = 107;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnExit
             // 
@@ -64,6 +65,7 @@
             this.btnExit.TabIndex = 106;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // txtCountry
             // 
@@ -157,11 +159,12 @@
             // 
             // txtSearchBar
             // 
-            this.txtSearchBar.Location = new System.Drawing.Point(62, 40);
+            this.txtSearchBar.Location = new System.Drawing.Point(62, 39);
             this.txtSearchBar.Name = "txtSearchBar";
             this.txtSearchBar.Size = new System.Drawing.Size(304, 20);
             this.txtSearchBar.TabIndex = 85;
             this.txtSearchBar.Text = "Search For Publisher";
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
             // 
             // lstPublishers
             // 
@@ -171,6 +174,7 @@
             this.lstPublishers.ScrollAlwaysVisible = true;
             this.lstPublishers.Size = new System.Drawing.Size(929, 290);
             this.lstPublishers.TabIndex = 84;
+            this.lstPublishers.SelectedIndexChanged += new System.EventHandler(this.lstPublishers_SelectedIndexChanged);
             // 
             // btnAdd
             // 
@@ -181,6 +185,7 @@
             this.btnAdd.TabIndex = 108;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmPublisher
             // 
