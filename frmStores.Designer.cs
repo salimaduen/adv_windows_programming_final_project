@@ -56,6 +56,7 @@
             this.btnRemove.TabIndex = 107;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnExit
             // 
@@ -66,6 +67,7 @@
             this.btnExit.TabIndex = 106;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // txtZip
             // 
@@ -121,7 +123,7 @@
             this.lblZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblZip.Location = new System.Drawing.Point(592, 455);
             this.lblZip.Name = "lblZip";
-            this.lblZip.Size = new System.Drawing.Size(39, 25);
+            this.lblZip.Size = new System.Drawing.Size(31, 20);
             this.lblZip.TabIndex = 91;
             this.lblZip.Text = "Zip";
             // 
@@ -131,7 +133,7 @@
             this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblState.Location = new System.Drawing.Point(486, 455);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(58, 25);
+            this.lblState.Size = new System.Drawing.Size(48, 20);
             this.lblState.TabIndex = 90;
             this.lblState.Text = "State";
             // 
@@ -141,7 +143,7 @@
             this.lblCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCity.Location = new System.Drawing.Point(380, 455);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(46, 25);
+            this.lblCity.Size = new System.Drawing.Size(35, 20);
             this.lblCity.TabIndex = 89;
             this.lblCity.Text = "City";
             // 
@@ -151,7 +153,7 @@
             this.lblStoreAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreAddress.Location = new System.Drawing.Point(274, 455);
             this.lblStoreAddress.Name = "lblStoreAddress";
-            this.lblStoreAddress.Size = new System.Drawing.Size(137, 25);
+            this.lblStoreAddress.Size = new System.Drawing.Size(111, 20);
             this.lblStoreAddress.TabIndex = 88;
             this.lblStoreAddress.Text = "Store Address";
             // 
@@ -161,7 +163,7 @@
             this.lblStoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreName.Location = new System.Drawing.Point(168, 455);
             this.lblStoreName.Name = "lblStoreName";
-            this.lblStoreName.Size = new System.Drawing.Size(116, 25);
+            this.lblStoreName.Size = new System.Drawing.Size(94, 20);
             this.lblStoreName.TabIndex = 87;
             this.lblStoreName.Text = "Store Name";
             // 
@@ -171,7 +173,7 @@
             this.lblStoreId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreId.Location = new System.Drawing.Point(62, 455);
             this.lblStoreId.Name = "lblStoreId";
-            this.lblStoreId.Size = new System.Drawing.Size(83, 25);
+            this.lblStoreId.Size = new System.Drawing.Size(69, 20);
             this.lblStoreId.TabIndex = 86;
             this.lblStoreId.Text = "Store ID";
             // 
@@ -191,6 +193,7 @@
             this.lstStores.ScrollAlwaysVisible = true;
             this.lstStores.Size = new System.Drawing.Size(929, 290);
             this.lstStores.TabIndex = 84;
+            this.lstStores.SelectedIndexChanged += new System.EventHandler(this.lstStores_SelectedIndexChanged);
             // 
             // btnAdd
             // 
@@ -201,8 +204,9 @@
             this.btnAdd.TabIndex = 108;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // Stores
+            // frmStores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -225,7 +229,7 @@
             this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.lstStores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Stores";
+            this.Name = "frmStores";
             this.Text = "Stores";
             this.ResumeLayout(false);
             this.PerformLayout();

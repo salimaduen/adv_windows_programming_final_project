@@ -207,9 +207,6 @@
     <EmbeddedResource Include="frmMaintenance.resx">
       <DependentUpon>frmMaintenance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPublisher.resx">
-      <DependentUpon>frmPublisher.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
