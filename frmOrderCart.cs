@@ -26,6 +26,8 @@ namespace Final_Project
 
             dgvCartList.DataSource = cartTable;
             dgvCartList.Columns["Price"].DefaultCellStyle.Format = "C";
+
+            fillStoreCombo();
         }
 
         private void RemovePlaceholderText(object sender, EventArgs e)
@@ -37,6 +39,18 @@ namespace Final_Project
             }
         }
 
+        private void fillStoreCombo()
+        {
+            using (BookStoreEntities context = new BookStoreEntities())
+            {
+                var stores = context.stores
+                    .Select(s => s.stor_id)
+                    .ToList();
+                stores.Insert(0, "");
+                this.cmbStores.DataSource = stores;
+            }
+        }
+
         private void txtTotal_TextChanged(object sender, EventArgs e)
         {
 
@@ -44,6 +58,42 @@ namespace Final_Project
 
         private void btnPurchase_Click(object sender, EventArgs e)
         {
+            Dictionary<string, ValueTuple<int, decimal?>> items = new Dictionary<string, ValueTuple<int, decimal?>>();
+
+            foreach (DataRow row in this.cartTable.Rows)
+            {
+                string title_id = row["Id"].ToString();
+                decimal? price = row["Price"] as decimal?;
+
+                if (!items.ContainsKey(title_id))
+                {
+                    items.Add(title_id, (1, price));
+                }
+                else
+                {
+                    var current = items[title_id];
+                    items[title_id] = (current.Item1 + 1, current.Item2);
+                }
+            }
+
+            string storeId = this.cmbStores.SelectedItem.ToString();
+            string ordNum = GenerateUniqueOrderNumber();
+            DateTime orderDate = DateTime.Now;
+
+            if (items.Count <= 0)
+            {
+                MessageBox.Show("You must add at least one item before proceeding with purchase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (storeId.Equals(""))
+            {
+                MessageBox.Show("You must select a store before proceeding with purchase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            foreach (String key in items.Keys)
+            {
+                Console.WriteLine(key + ": " + items[key]);
+            }
             MessageBox.Show("Purchase was successfull!");
         }
 
@@ -119,8 +169,7 @@ namespace Final_Project
         
         private void UpdateCost()
         {
-            decimal subTotal = 0.0m
-                ;
+            decimal subTotal = 0.0m;
             foreach (DataRow row in this.cartTable.Rows)
             {
                 if (row["price"] != DBNull.Value)
@@ -128,9 +177,46 @@ namespace Final_Project
                     subTotal += Convert.ToDecimal(row["price"]);
                 }
             }
-            this.txtSubtotal.Text = Math.Round(subTotal, 2).ToString();
-            this.txtTax.Text = Math.Round(subTotal * 0.07m, 2).ToString();
-            this.txtTotal.Text = Math.Round(subTotal * 1.07m, 2).ToString();
+            this.txtSubtotal.Text = Math.Round(subTotal, 2).ToString("C");
+            this.txtTax.Text = Math.Round(subTotal * 0.07m, 2).ToString("C");
+            this.txtTotal.Text = Math.Round(subTotal * 1.07m, 2).ToString("C");
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (this.dgvCartList.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Must select a title first before removing!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataGridViewRow selectedRow = this.dgvCartList.SelectedRows[0];
+            this.dgvCartList.Rows.Remove(selectedRow);
+            UpdateCost();
+        }
+
+        private string GenerateUniqueOrderNumber()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
+
+            using (BookStoreEntities context = new BookStoreEntities())
+            {
+                string ordNum;
+
+                do
+                {
+                    // Generate a random length between 5 and 8 characters
+                    int length = random.Next(5, 9);
+
+                    // Generate the random alphanumeric string
+                    ordNum = new string(Enumerable.Repeat(chars, length)
+                                                  .Select(s => s[random.Next(s.Length)]).ToArray());
+
+                } while (context.sales.Any(s => s.ord_num == ordNum)); // Check uniqueness in the database
+
+                return ordNum;
+            }
         }
     }
 }

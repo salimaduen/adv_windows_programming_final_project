@@ -41,6 +41,8 @@
             this.btnPurchase = new System.Windows.Forms.Button();
             this.dgvTitleList = new System.Windows.Forms.DataGridView();
             this.dgvCartList = new System.Windows.Forms.DataGridView();
+            this.cmbStores = new System.Windows.Forms.ComboBox();
+            this.lblStore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTitleList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCartList)).BeginInit();
             this.SuspendLayout();
@@ -138,6 +140,7 @@
             this.btnRemove.TabIndex = 10;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnExit
             // 
@@ -182,6 +185,7 @@
             this.dgvCartList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCartList.Location = new System.Drawing.Point(560, 114);
             this.dgvCartList.Name = "dgvCartList";
+            this.dgvCartList.ReadOnly = true;
             this.dgvCartList.RowHeadersVisible = false;
             this.dgvCartList.RowHeadersWidth = 51;
             this.dgvCartList.RowTemplate.Height = 24;
@@ -189,11 +193,30 @@
             this.dgvCartList.Size = new System.Drawing.Size(373, 212);
             this.dgvCartList.TabIndex = 14;
             // 
+            // cmbStores
+            // 
+            this.cmbStores.FormattingEnabled = true;
+            this.cmbStores.Location = new System.Drawing.Point(560, 62);
+            this.cmbStores.Name = "cmbStores";
+            this.cmbStores.Size = new System.Drawing.Size(133, 24);
+            this.cmbStores.TabIndex = 15;
+            // 
+            // lblStore
+            // 
+            this.lblStore.AutoSize = true;
+            this.lblStore.Location = new System.Drawing.Point(557, 38);
+            this.lblStore.Name = "lblStore";
+            this.lblStore.Size = new System.Drawing.Size(55, 16);
+            this.lblStore.TabIndex = 16;
+            this.lblStore.Text = "Store ID";
+            // 
             // frmOrderCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.lblStore);
+            this.Controls.Add(this.cmbStores);
             this.Controls.Add(this.dgvCartList);
             this.Controls.Add(this.dgvTitleList);
             this.Controls.Add(this.btnPurchase);
@@ -232,5 +255,7 @@
         private System.Windows.Forms.Button btnPurchase;
         private System.Windows.Forms.DataGridView dgvTitleList;
         private System.Windows.Forms.DataGridView dgvCartList;
+        private System.Windows.Forms.ComboBox cmbStores;
+        private System.Windows.Forms.Label lblStore;
     }
 }

@@ -41,6 +41,7 @@ namespace Final_Project
                                       orderby sale.ord_date
                                       select new
                                       {
+                                          StoreId = sale.stor_id,
                                           OrderNumber = sale.ord_num,
                                           TitleId = sale.title_id,
                                           Title = title.title1,
