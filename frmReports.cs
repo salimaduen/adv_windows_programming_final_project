@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,9 +72,54 @@ namespace Final_Project
             }
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.Title = "Save Report";
+                saveFileDialog.FileName = "Report.csv";
 
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                        {
+                            for (int i = 0; i < dgvReport.Columns.Count; i++)
+                            {
+                                writer.Write(dgvReport.Columns[i].HeaderText);
+                                if (i < dgvReport.Columns.Count - 1)
+                                    writer.Write(","); 
+                            }
+                            writer.WriteLine();
 
+                            foreach (DataGridViewRow row in dgvReport.Rows)
+                            {
+                                for (int i = 0; i < dgvReport.Columns.Count; i++)
+                                {
+                                    writer.Write(row.Cells[i].Value?.ToString() ?? "");
+                                    if (i < dgvReport.Columns.Count - 1)
+                                        writer.Write(",");
+                                }
+                                writer.WriteLine();
+                            }
+                        }
+
+                        MessageBox.Show("Report saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while saving the file:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
 
     }
 }

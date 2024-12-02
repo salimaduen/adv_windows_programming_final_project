@@ -43,6 +43,8 @@
             this.dgvCartList = new System.Windows.Forms.DataGridView();
             this.cmbStores = new System.Windows.Forms.ComboBox();
             this.lblStore = new System.Windows.Forms.Label();
+            this.lblPayTerms = new System.Windows.Forms.Label();
+            this.cmbPayTerm = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTitleList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCartList)).BeginInit();
             this.SuspendLayout();
@@ -195,6 +197,7 @@
             // 
             // cmbStores
             // 
+            this.cmbStores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStores.FormattingEnabled = true;
             this.cmbStores.Location = new System.Drawing.Point(560, 62);
             this.cmbStores.Name = "cmbStores";
@@ -210,11 +213,31 @@
             this.lblStore.TabIndex = 16;
             this.lblStore.Text = "Store ID";
             // 
+            // lblPayTerms
+            // 
+            this.lblPayTerms.AutoSize = true;
+            this.lblPayTerms.Location = new System.Drawing.Point(726, 38);
+            this.lblPayTerms.Name = "lblPayTerms";
+            this.lblPayTerms.Size = new System.Drawing.Size(73, 16);
+            this.lblPayTerms.TabIndex = 18;
+            this.lblPayTerms.Text = "Pay Terms";
+            // 
+            // cmbPayTerm
+            // 
+            this.cmbPayTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPayTerm.FormattingEnabled = true;
+            this.cmbPayTerm.Location = new System.Drawing.Point(729, 62);
+            this.cmbPayTerm.Name = "cmbPayTerm";
+            this.cmbPayTerm.Size = new System.Drawing.Size(133, 24);
+            this.cmbPayTerm.TabIndex = 17;
+            // 
             // frmOrderCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.lblPayTerms);
+            this.Controls.Add(this.cmbPayTerm);
             this.Controls.Add(this.lblStore);
             this.Controls.Add(this.cmbStores);
             this.Controls.Add(this.dgvCartList);
@@ -257,5 +280,7 @@
         private System.Windows.Forms.DataGridView dgvCartList;
         private System.Windows.Forms.ComboBox cmbStores;
         private System.Windows.Forms.Label lblStore;
+        private System.Windows.Forms.Label lblPayTerms;
+        private System.Windows.Forms.ComboBox cmbPayTerm;
     }
 }

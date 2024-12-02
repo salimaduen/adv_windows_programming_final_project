@@ -35,24 +35,27 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblTax = new System.Windows.Forms.Label();
             this.lblSubtotal = new System.Windows.Forms.Label();
-            this.lstSummary = new System.Windows.Forms.ListBox();
+            this.lblOrderNumber = new System.Windows.Forms.Label();
+            this.dgvOrderedItems = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderedItems)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(627, 404);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(133, 38);
             this.btnExit.TabIndex = 20;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // txtTotal
             // 
             this.txtTotal.Location = new System.Drawing.Point(675, 294);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(132, 22);
@@ -61,7 +64,7 @@
             // txtTax
             // 
             this.txtTax.Location = new System.Drawing.Point(675, 249);
-            this.txtTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTax.Margin = new System.Windows.Forms.Padding(4);
             this.txtTax.Name = "txtTax";
             this.txtTax.ReadOnly = true;
             this.txtTax.Size = new System.Drawing.Size(132, 22);
@@ -70,7 +73,7 @@
             // txtSubtotal
             // 
             this.txtSubtotal.Location = new System.Drawing.Point(675, 201);
-            this.txtSubtotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubtotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
             this.txtSubtotal.Size = new System.Drawing.Size(132, 22);
@@ -109,22 +112,37 @@
             this.lblSubtotal.TabIndex = 14;
             this.lblSubtotal.Text = "Subtotal";
             // 
-            // lstSummary
+            // lblOrderNumber
             // 
-            this.lstSummary.FormattingEnabled = true;
-            this.lstSummary.ItemHeight = 16;
-            this.lstSummary.Location = new System.Drawing.Point(71, 70);
-            this.lstSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lstSummary.Name = "lstSummary";
-            this.lstSummary.ScrollAlwaysVisible = true;
-            this.lstSummary.Size = new System.Drawing.Size(448, 436);
-            this.lstSummary.TabIndex = 13;
+            this.lblOrderNumber.AutoSize = true;
+            this.lblOrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrderNumber.Location = new System.Drawing.Point(66, 28);
+            this.lblOrderNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOrderNumber.Name = "lblOrderNumber";
+            this.lblOrderNumber.Size = new System.Drawing.Size(136, 25);
+            this.lblOrderNumber.TabIndex = 21;
+            this.lblOrderNumber.Text = "Order Number";
             // 
-            // Summary
+            // dgvOrderedItems
+            // 
+            this.dgvOrderedItems.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvOrderedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrderedItems.Location = new System.Drawing.Point(71, 70);
+            this.dgvOrderedItems.Name = "dgvOrderedItems";
+            this.dgvOrderedItems.ReadOnly = true;
+            this.dgvOrderedItems.RowHeadersVisible = false;
+            this.dgvOrderedItems.RowHeadersWidth = 51;
+            this.dgvOrderedItems.RowTemplate.Height = 24;
+            this.dgvOrderedItems.Size = new System.Drawing.Size(448, 451);
+            this.dgvOrderedItems.TabIndex = 22;
+            // 
+            // frmSummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(859, 588);
+            this.Controls.Add(this.dgvOrderedItems);
+            this.Controls.Add(this.lblOrderNumber);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtTax);
@@ -132,11 +150,11 @@
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblTax);
             this.Controls.Add(this.lblSubtotal);
-            this.Controls.Add(this.lstSummary);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Summary";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "frmSummary";
             this.Text = "Summary";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderedItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +169,7 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblTax;
         private System.Windows.Forms.Label lblSubtotal;
-        private System.Windows.Forms.ListBox lstSummary;
+        private System.Windows.Forms.Label lblOrderNumber;
+        private System.Windows.Forms.DataGridView dgvOrderedItems;
     }
 }

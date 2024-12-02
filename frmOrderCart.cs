@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Final_Project
 {
@@ -27,7 +28,8 @@ namespace Final_Project
             dgvCartList.DataSource = cartTable;
             dgvCartList.Columns["Price"].DefaultCellStyle.Format = "C";
 
-            fillStoreCombo();
+            FillStoreCombo();
+            FillPayCombo();
         }
 
         private void RemovePlaceholderText(object sender, EventArgs e)
@@ -39,7 +41,14 @@ namespace Final_Project
             }
         }
 
-        private void fillStoreCombo()
+        private void FillPayCombo()
+        {
+            List<int> lst = new List<int>();
+            lst.AddRange(Enumerable.Range(1, 12));
+            this.cmbPayTerm.DataSource = lst;
+        }
+
+        private void FillStoreCombo()
         {
             using (BookStoreEntities context = new BookStoreEntities())
             {
@@ -78,23 +87,70 @@ namespace Final_Project
 
             string storeId = this.cmbStores.SelectedItem.ToString();
             string ordNum = GenerateUniqueOrderNumber();
-            DateTime orderDate = DateTime.Now;
+            string payTerms = this.cmbPayTerm.SelectedItem.ToString();
+            DateTime orderDate = DateTime.Now.Date;
 
             if (items.Count <= 0)
             {
                 MessageBox.Show("You must add at least one item before proceeding with purchase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            if (storeId.Equals(""))
+            if (String.IsNullOrEmpty(storeId))
             {
                 MessageBox.Show("You must select a store before proceeding with purchase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            foreach (String key in items.Keys)
+            using (BookStoreEntities context = new BookStoreEntities())
             {
-                Console.WriteLine(key + ": " + items[key]);
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var item in items)
+                        {
+                            string titleId = item.Key;
+                            short quantity = (short)item.Value.Item1;
+
+                        
+                            context.sales.Add(new sale
+                            {
+                                stor_id = storeId,
+                                ord_num = ordNum,
+                                ord_date = orderDate,
+                                qty = quantity,
+                                payterms = payTerms,
+                                title_id = titleId
+                            });
+                        }
+
+                        context.SaveChanges();
+                        transaction.Commit();
+
+                        MessageBox.Show("Purchase was successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        var orderedItems = items.Select(item =>
+                            new
+                            {
+                                TitleId = item.Key,
+                                Title = context.titles.FirstOrDefault(t => t.title_id == item.Key)?.title1,
+                                Quantity = item.Value.Item1,
+                                Price = item.Value.Item2 ?? 0
+                            }).Select(x => (x.TitleId, x.Title, x.Quantity, x.Price)).ToList();
+
+                        frmSummary summary = new frmSummary(ordNum, orderedItems, this.txtSubtotal.Text, this.txtTax.Text, this.txtTotal.Text);
+                        summary.Show();
+
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"An error occurred while processing the purchase:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            MessageBox.Show("Purchase was successfull!");
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -106,24 +162,21 @@ namespace Final_Project
         {
             using (BookStoreEntities context = new BookStoreEntities())
             {
-                // Get the search text from the search bar
+   
                 string searchText = this.txtSearchBar.Text.ToLower();
 
-                // Query the titles table, excluding NULL prices
                 var titles = context.titles
-                    .Where(t => t.price != null && t.title1.ToLower().Contains(searchText)) // Skip NULL prices
+                    .Where(t => t.price != null && t.title1.ToLower().Contains(searchText))
                     .Select(t => new { t.title_id, t.title1, t.price })
                     .ToList();
 
-                // Clear the DataGridView
+ 
                 dgvTitleList.DataSource = null;
 
                 if (titles.Count > 0)
                 {
-                    // Bind the queried titles to the DataGridView
                     dgvTitleList.DataSource = titles;
 
-                    // Format columns (optional)
                     dgvTitleList.Columns["title_id"].HeaderText = "Title ID";
                     dgvTitleList.Columns["title1"].HeaderText = "Title";
                     dgvTitleList.Columns["price"].HeaderText = "Price";
@@ -131,7 +184,7 @@ namespace Final_Project
                 }
                 else
                 {
-                    // If no results are found, display a message
+
                     dgvTitleList.DataSource = new[]
                     {
                 new { title = "No titles found", price = (decimal?)null }
@@ -164,7 +217,6 @@ namespace Final_Project
 
             cartTable.Rows.Add(id, title, price.Value);
             UpdateCost();
-
         }
         
         private void UpdateCost()
@@ -206,14 +258,12 @@ namespace Final_Project
 
                 do
                 {
-                    // Generate a random length between 5 and 8 characters
                     int length = random.Next(5, 9);
 
-                    // Generate the random alphanumeric string
                     ordNum = new string(Enumerable.Repeat(chars, length)
                                                   .Select(s => s[random.Next(s.Length)]).ToArray());
 
-                } while (context.sales.Any(s => s.ord_num == ordNum)); // Check uniqueness in the database
+                } while (context.sales.Any(s => s.ord_num == ordNum)); // loop if num not unique
 
                 return ordNum;
             }
