@@ -111,7 +111,7 @@
             this.lblCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountry.Location = new System.Drawing.Point(482, 450);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(81, 25);
+            this.lblCountry.Size = new System.Drawing.Size(64, 20);
             this.lblCountry.TabIndex = 90;
             this.lblCountry.Text = "Country";
             // 
@@ -121,7 +121,7 @@
             this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblState.Location = new System.Drawing.Point(376, 450);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(58, 25);
+            this.lblState.Size = new System.Drawing.Size(48, 20);
             this.lblState.TabIndex = 89;
             this.lblState.Text = "State";
             // 
@@ -131,7 +131,7 @@
             this.lblCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCity.Location = new System.Drawing.Point(270, 450);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(46, 25);
+            this.lblCity.Size = new System.Drawing.Size(35, 20);
             this.lblCity.TabIndex = 88;
             this.lblCity.Text = "City";
             // 
@@ -141,7 +141,7 @@
             this.lblPubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPubName.Location = new System.Drawing.Point(164, 450);
             this.lblPubName.Name = "lblPubName";
-            this.lblPubName.Size = new System.Drawing.Size(104, 25);
+            this.lblPubName.Size = new System.Drawing.Size(83, 20);
             this.lblPubName.TabIndex = 87;
             this.lblPubName.Text = "Pub Name";
             // 
@@ -151,7 +151,7 @@
             this.lblPubId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPubId.Location = new System.Drawing.Point(58, 450);
             this.lblPubId.Name = "lblPubId";
-            this.lblPubId.Size = new System.Drawing.Size(71, 25);
+            this.lblPubId.Size = new System.Drawing.Size(58, 20);
             this.lblPubId.TabIndex = 86;
             this.lblPubId.Text = "Pub ID";
             // 
@@ -182,7 +182,7 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // Publishers
+            // frmPublisher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,7 +203,7 @@
             this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.lstPublishers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Publishers";
+            this.Name = "frmPublisher";
             this.Text = "Publishers";
             this.ResumeLayout(false);
             this.PerformLayout();
