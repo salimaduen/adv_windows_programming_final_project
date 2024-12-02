@@ -24,11 +24,7 @@ namespace Final_Project
             PopulateStoreList(string.Empty);
         }
 
-        private void txtSearchBar_TextChanged(object sender, EventArgs e)
-        {
-            string searchText = txtSearchBar.Text.Trim().ToLower();
-            PopulateStoreList(searchText);
-        }
+
 
         private void PopulateStoreList(string searchText)
         {
@@ -234,6 +230,12 @@ namespace Final_Project
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearchBar.Text.Trim().ToLower();
+            PopulateStoreList(searchText);
         }
     }
 }

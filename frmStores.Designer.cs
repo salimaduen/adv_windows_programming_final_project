@@ -183,7 +183,7 @@
             this.txtSearchBar.Name = "txtSearchBar";
             this.txtSearchBar.Size = new System.Drawing.Size(304, 20);
             this.txtSearchBar.TabIndex = 85;
-            this.txtSearchBar.Text = "Search For Store";
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
             // 
             // lstStores
             // 
