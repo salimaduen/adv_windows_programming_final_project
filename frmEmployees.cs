@@ -18,13 +18,11 @@ namespace Final_Project
             InitializeComponent();
             txtSearchBar.GotFocus += RemovePlaceholderText;
 
-            // Bind the Load event
             this.Load += FrmEmployees_Load;
         }
 
         private void FrmEmployees_Load(object sender, EventArgs e)
         {
-            // Populate the listbox when the form loads
             PopulateEmployeeList(string.Empty);
         }
 

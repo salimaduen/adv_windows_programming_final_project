@@ -15,12 +15,11 @@ namespace Final_Project
         public frmStores()
         {
             InitializeComponent();
-            this.Load += FrmStores_Load; // Load event to populate the list on form load
+            this.Load += FrmStores_Load;
         }
 
         private void FrmStores_Load(object sender, EventArgs e)
         {
-            // Populate the store list on form load
             PopulateStoreList(string.Empty);
         }
 

@@ -210,6 +210,12 @@
     <EmbeddedResource Include="frmOrderCart.resx">
       <DependentUpon>frmOrderCart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPublisher.resx">
+      <DependentUpon>frmPublisher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchTitles.resx">
+      <DependentUpon>frmSearchTitles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -148,6 +148,7 @@ namespace Final_Project
 
                     var newTitle = new title
                     {
+                        title_id = GenerateId(type),
                         title1 = title,
                         type = type,
                         price = price,
@@ -248,6 +249,51 @@ namespace Final_Project
             }
         }
 
-       
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private string GenerateId(string type)
+        {
+            Dictionary<string, string> typePrefixMap = new Dictionary<string, string>
+                {
+                    { "business", "BU" },
+                    { "mod_cook", "MC" },
+                    { "trad_cook", "TC" },
+                    { "psychology", "PS" },
+                    { "popular_comp", "PC" },
+                    { "UNDECIDED", "MC" }
+                };
+
+            string prefix = typePrefixMap[type];
+
+            int maxNumericLength = 6 - prefix.Length;
+
+            using (BookStoreEntities context = new BookStoreEntities())
+            {
+                var maxId = context.titles
+                    .Where(t => t.title_id.StartsWith(prefix))
+                    .Select(t => t.title_id.Substring(prefix.Length))
+                    .OrderByDescending(id => id)
+                    .FirstOrDefault();
+
+                int nextNumber = 1; 
+
+                if (maxId != null && int.TryParse(maxId, out int currentMax))
+                {
+                    nextNumber = currentMax + 1;
+                }
+
+                string numericPart = nextNumber.ToString($"D{maxNumericLength}");
+                if (numericPart.Length > maxNumericLength)
+                {
+                    throw new InvalidOperationException($"Cannot generate a new ID for prefix '{prefix}' as it exceeds the maximum length.");
+                }
+
+                return $"{prefix}{numericPart}";
+            }
+        }
+
+
     }
 }

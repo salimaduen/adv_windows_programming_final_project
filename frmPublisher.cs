@@ -20,12 +20,11 @@ namespace Final_Project
         {
             InitializeComponent();
             txtSearchBar.GotFocus += RemovePlaceholderText;
-          
         }
 
         private void RemovePlaceholderText(object sender, EventArgs e)
         {
-            if (txtSearchBar.Text == "Search For Publisher") 
+            if (txtSearchBar.Text == "Search For Publisher")
             {
                 txtSearchBar.Text = string.Empty;
                 txtSearchBar.ForeColor = System.Drawing.Color.Black;
@@ -121,7 +120,7 @@ namespace Final_Project
             }
         }
 
-        private void lstPublishers_SelectedIndexChanged_(object sender, EventArgs e)
+        private void lstPublishers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstPublishers.SelectedIndex == -1)
                 return;
@@ -194,6 +193,11 @@ namespace Final_Project
             txtCity.Text = "";
             txtState.Text = "";
             txtCountry.Text = "";
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
