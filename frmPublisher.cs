@@ -16,10 +16,18 @@ namespace Final_Project
 {
     public partial class frmPublisher : Form
     {
+        private readonly PublisherService _publisherService;
+
         public frmPublisher()
         {
             InitializeComponent();
+            _publisherService = new PublisherService();
             txtSearchBar.GotFocus += RemovePlaceholderText;
+        }
+
+        private void frmPublisher_Load(object sender, EventArgs e)
+        {
+            PopulatePublisherList(string.Empty);
         }
 
         private void RemovePlaceholderText(object sender, EventArgs e)
@@ -27,187 +35,127 @@ namespace Final_Project
             if (txtSearchBar.Text == "Search For Publisher")
             {
                 txtSearchBar.Text = string.Empty;
-                txtSearchBar.ForeColor = System.Drawing.Color.Black;
+                txtSearchBar.ForeColor = Color.Black;
             }
         }
 
         private void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
-            if (this.txtSearchBar.Text.Length == 0)
+            try
             {
-                this.lstPublishers.Items.Clear();
-
-                using (BookStoreEntities context = new BookStoreEntities())
-                {
-                    var publishers = context.publishers
-                        .Select(p => new { p.pub_name, p.pub_id })
-                        .ToList();
-
-                    foreach (var pub in publishers)
-                    {
-                        this.lstPublishers.Items.Add($"{pub.pub_name} ({pub.pub_id})");
-                        Console.WriteLine($"{pub.pub_name} ({pub.pub_id})");
-                    }
-                }
+                string searchText = txtSearchBar.Text.Trim();
+                PopulatePublisherList(searchText);
             }
-            else
+            catch (Exception ex)
             {
-                this.lstPublishers.Items.Clear();
-
-                using (BookStoreEntities context = new BookStoreEntities())
-                {
-                    string searchText = this.txtSearchBar.Text.ToLower();
-
-                    var publishers = context.publishers
-                        .Where(p => p.pub_name.ToLower().StartsWith(searchText))
-                        .Select(p => new { p.pub_name, p.pub_id })
-                        .ToList();
-
-                    if (publishers.Count > 0)
-                    {
-                        foreach (var pub in publishers)
-                        {
-                            this.lstPublishers.Items.Add($"{pub.pub_name} ({pub.pub_id})");
-                        }
-                    }
-                    else
-                    {
-                        this.lstPublishers.Items.Add("No publishers found");
-                    }
-                }
-            }
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            string id = txtPubId.Text.Trim();
-            string name = txtPubName.Text.Trim();
-            string city = txtCity.Text.Trim();
-            string state = txtState.Text.Trim().ToUpper();
-            string country = txtCountry.Text.Trim();
-
-            using (BookStoreEntities context = new BookStoreEntities())
-            {
-                try
-                {
-                    bool publisherExists = context.publishers.Any(p => p.pub_id == id);
-
-                    if (publisherExists)
-                    {
-                        MessageBox.Show("Publisher already exists!", "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    var newPublisher = new publisher
-                    {
-                        pub_id = id,
-                        pub_name = name,
-                        city = string.IsNullOrEmpty(city) ? null : city,
-                        state = string.IsNullOrEmpty(state) ? null : state,
-                        country = string.IsNullOrEmpty(country) ? null : country
-                    };
-
-                    context.publishers.Add(newPublisher);
-                    context.SaveChanges();
-                    txtSearchBar_TextChanged(sender, e);
-                    MessageBox.Show("Publisher added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    var innerException = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-                    MessageBox.Show($"An error occurred while adding the publisher:\n{innerException}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show($"Error searching for publishers:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void lstPublishers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstPublishers.SelectedIndex == -1)
-                return;
+            if (lstPublishers.SelectedIndex == -1) return;
 
-            string selected = lstPublishers.Items[lstPublishers.SelectedIndex].ToString();
-            string[] selectedId = selected.Split('(');
-            string id = selectedId[selectedId.Length - 1].Replace(")", "").Trim();
+            string selected = lstPublishers.SelectedItem.ToString();
+            string pubId = selected.Split('(').Last().Trim(')');
 
-            using (BookStoreEntities context = new BookStoreEntities())
+            try
             {
-                var publisher = context.publishers.FirstOrDefault(p => p.pub_id == id);
-
-                if (publisher != null)
+                var publishers = _publisherService.GetPublishers(pubId);
+                if (publishers.Any())
                 {
+                    var publisher = publishers.First();
                     txtPubId.Text = publisher.pub_id;
                     txtPubName.Text = publisher.pub_name;
                     txtCity.Text = publisher.city;
                     txtState.Text = publisher.state;
                     txtCountry.Text = publisher.country;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading publisher details:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PopulatePublisherList(string searchText)
+        {
+            lstPublishers.Items.Clear();
+
+            try
+            {
+                var publishers = _publisherService.GetPublishers(searchText);
+
+                if (publishers.Any())
+                {
+                    foreach (var pub in publishers)
+                    {
+                        lstPublishers.Items.Add($"{pub.pub_name} ({pub.pub_id})");
+                    }
+                }
                 else
                 {
-                    MessageBox.Show("No publisher found with the selected ID.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lstPublishers.Items.Add("No publishers found");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading publishers:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var newPublisher = new publisher
+                {
+                    pub_id = txtPubId.Text.Trim(),
+                    pub_name = txtPubName.Text.Trim(),
+                    city = txtCity.Text.Trim(),
+                    state = txtState.Text.Trim().ToUpper(),
+                    country = txtCountry.Text.Trim()
+                };
+
+                _publisherService.AddPublisher(newPublisher);
+                PopulatePublisherList(string.Empty);
+                MessageBox.Show("Publisher added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding publisher:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            string id = txtPubId.Text.Trim();
-
-            if (string.IsNullOrEmpty(id))
+            try
             {
-                MessageBox.Show("Please enter a valid ID to remove.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                string pubId = txtPubId.Text.Trim();
+
+                if (string.IsNullOrEmpty(pubId))
+                {
+                    MessageBox.Show("Please enter a valid Publisher ID to remove.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                _publisherService.RemovePublisher(pubId);
+                PopulatePublisherList(string.Empty);
+                MessageBox.Show("Publisher removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            using (BookStoreEntities context = new BookStoreEntities())
+            catch (InvalidOperationException ex)
             {
-                try
-                {
-                    // Check if the publisher exists
-                    var publisherToRemove = context.publishers.SingleOrDefault(p => p.pub_id == id);
-                    if (publisherToRemove == null)
-                    {
-                        MessageBox.Show("Publisher not found!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    // Update pub_id for all titles referencing this publisher to the new ID (9952)
-                    var relatedTitles = context.titles.Where(t => t.pub_id == id).ToList();
-                    foreach (var title in relatedTitles)
-                    {
-                        title.pub_id = null; // Set pub_id to the new ID
-                    }
-
-                    // Update pub_id for employees referencing this publisher to the new ID (9952)
-                    var relatedEmployees = context.employees.Where(es => es.pub_id == id).ToList();
-                    foreach (var employee in relatedEmployees)
-                    {
-                        employee.pub_id = "9952"; // Set pub_id to the new ID
-                    }
-
-                    // Remove related records in pub_info
-                    var relatedPubInfo = context.pub_info.SingleOrDefault(pi => pi.pub_id == id);
-                    if (relatedPubInfo != null)
-                    {
-                        context.pub_info.Remove(relatedPubInfo);
-                    }
-
-                    // Finally, remove the publisher
-                    context.publishers.Remove(publisherToRemove);
-                    context.SaveChanges();
-
-                    MessageBox.Show("Publisher record removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    ClearInputFields();
-                    txtSearchBar_TextChanged(sender, e);
-                }
-                catch (Exception ex)
-                {
-                    var innerException = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-                    MessageBox.Show($"Error occurred while removing the publisher:\n{innerException}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show(ex.Message, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error removing publisher:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void ClearInputFields()
         {
@@ -223,4 +171,5 @@ namespace Final_Project
             this.Close();
         }
     }
+
 }

@@ -98,6 +98,7 @@
             this.Controls.Add(this.lblUsername);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frmLogin";
             this.Text = "Log In";
             this.ResumeLayout(false);

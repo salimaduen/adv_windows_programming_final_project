@@ -152,6 +152,7 @@
             this.Controls.Add(this.lblSubtotal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frmSummary";
             this.Text = "Summary";
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderedItems)).EndInit();

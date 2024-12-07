@@ -108,7 +108,6 @@
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(132, 22);
             this.txtTotal.TabIndex = 7;
-            this.txtTotal.TextChanged += new System.EventHandler(this.txtTotal_TextChanged);
             // 
             // txtSearchBar
             // 
@@ -174,6 +173,7 @@
             this.dgvTitleList.Location = new System.Drawing.Point(45, 114);
             this.dgvTitleList.MultiSelect = false;
             this.dgvTitleList.Name = "dgvTitleList";
+            this.dgvTitleList.ReadOnly = true;
             this.dgvTitleList.RowHeadersVisible = false;
             this.dgvTitleList.RowHeadersWidth = 51;
             this.dgvTitleList.RowTemplate.Height = 24;
@@ -255,6 +255,7 @@
             this.Controls.Add(this.lblSubtotal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frmOrderCart";
             this.Text = "Order Cart";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTitleList)).EndInit();

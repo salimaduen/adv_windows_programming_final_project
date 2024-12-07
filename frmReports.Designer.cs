@@ -138,6 +138,7 @@
             this.Controls.Add(this.lblFrom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frmReports";
             this.Text = "Report";
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();

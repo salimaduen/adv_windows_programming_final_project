@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Final_Project.Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +14,20 @@ namespace Final_Project
 {
     public partial class frmSearchTitles : Form
     {
+        private readonly TitleService _titleService;
+
         public frmSearchTitles()
         {
             InitializeComponent();
+            _titleService = new TitleService();
             txtSearchBar.GotFocus += RemovePlaceholderText;
         }
+
+        private void frmSearchTitles_Load(object sender, EventArgs e)
+        {
+            PopulateTitleList(string.Empty);
+        }
+
         private void RemovePlaceholderText(object sender, EventArgs e)
         {
             if (txtSearchBar.Text == "Search title...")
@@ -26,100 +37,96 @@ namespace Final_Project
             }
         }
 
-       
-       
         private void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
-            if (this.txtSearchBar.Text.Length == 0)
+            string searchText = txtSearchBar.Text.Trim();
+            PopulateTitleList(searchText);
+        }
+
+        private void PopulateTitleList(string searchText)
+        {
+            lstBooksToAdd.Items.Clear();
+
+            try
             {
-                this.lstBooksToAdd.Items.Clear();
+                var titles = _titleService.SearchTitles(searchText);
 
-                using (BookStoreEntities context = new BookStoreEntities())
+                if (titles.Any())
                 {
-                    var titles = context.titles
-                        .Select(t => new { t.title1, t.title_id })
-                        .ToList();
-
                     foreach (var title in titles)
                     {
-                        this.lstBooksToAdd.Items.Add($"{title.title1} {title.title_id}");
+                        lstBooksToAdd.Items.Add($"{title.title1} ({title.title_id})");
                     }
+                }
+                else
+                {
+                    lstBooksToAdd.Items.Add("No titles found");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                this.lstBooksToAdd.Items.Clear();
-
-                using (BookStoreEntities context = new BookStoreEntities())
-                {
-                    string searchText = this.txtSearchBar.Text.ToLower();
-
-                    var titles = context.titles
-                        .Where(t => t.title1.ToLower().StartsWith(searchText))
-                        .Select(t => new { t.title1, t.title_id })
-                        .ToList();
-
-                    if (titles.Count > 0)
-                    {
-                        foreach (var title in titles)
-                        {
-                            this.lstBooksToAdd.Items.Add($"{title.title1} {title.title_id}");
-                        }
-                    }
-                    else
-                    {
-                        this.lstBooksToAdd.Items.Add("No titles found");
-                    }
-                }
+                MessageBox.Show($"Error fetching titles:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void lstTitles_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstBooksToAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstBooksToAdd.SelectedIndex == -1)
                 return;
 
-            
-            string selected = lstBooksToAdd.Items[lstBooksToAdd.SelectedIndex].ToString();
-            string[] selectedId = selected.Split(' ');
-            selected = selectedId[selectedId.Length - 1]; 
+            string selected = lstBooksToAdd.SelectedItem.ToString();
+            string titleId = selected.Split('(').Last().Trim(')');
 
-            if (!string.IsNullOrEmpty(selected))
+            var title = _titleService.GetTitleDetails(titleId);
+
+            if (title != null)
             {
-                try
-                {
-                    using (BookStoreEntities context = new BookStoreEntities())
-                    {
-                        
-                        var title = context.titles
-                            .Where(t => t.title_id.Equals(selected))
-                            .FirstOrDefault();
+                txtTitleID.Text = title.title_id;
+                txtTitle.Text = title.title1;
+                txtType.Text = title.type;
+                txtPublisherID.Text = title.pub_id;
+                txtPrice.Text = title.price?.ToString("C");
+                txtAdvance.Text = title.advance?.ToString("C");
+                txtRoyalty.Text = title.royalty?.ToString();
+                txtYTDSales.Text = title.ytd_sales?.ToString();
+                txtNotes.Text = title.notes;
+                mtxtPublishedDate.Text = title.pubdate.ToString("MM-dd-yyyy");
+            }
+            else
+            {
+                MessageBox.Show("No title found with the selected ID.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
-                        if (title != null)
-                        {
-                            
-                            txtTitleID.Text = title.title_id;
-                            txtTitle.Text = title.title1;
-                            txtType.Text = title.type;
-                            txtPublisherID.Text = title.pub_id;
-                            txtPrice.Text = title.price.HasValue ? title.price.Value.ToString("C") : string.Empty; 
-                            txtAdvance.Text = title.advance.HasValue ? title.advance.Value.ToString("C") : string.Empty;  
-                            txtRoyalty.Text = title.royalty.HasValue ? title.royalty.Value.ToString() : string.Empty;
-                            txtYTDSales.Text = title.ytd_sales.HasValue ? title.ytd_sales.Value.ToString() : string.Empty;
-                            txtNotes.Text = title.notes;
-                            DateTime pubdate = title.pubdate;
-                            mtxtPublishedDate.Text = pubdate.ToString("MM-dd-yyyy"); 
-                        }
-                        else
-                        {
-                            MessageBox.Show("No title found with the selected ID.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error occurred while fetching the title:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+        private void DecimalEditor(TextBox textBox, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; // Prevent invalid character input
+            }
+
+            // Allow only one decimal point
+            if (e.KeyChar == '.' && textBox.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            DecimalEditor(txtPrice, e);
+        }
+
+        private void txtAdvance_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            DecimalEditor(txtAdvance, e);
+        }
+
+        private void txtRoyalty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Allow only numeric input
             }
         }
 
@@ -134,110 +141,57 @@ namespace Final_Project
             string notes = txtNotes.Text.Trim();
             string publisherID = txtPublisherID.Text.Trim();
 
-            using (BookStoreEntities context = new BookStoreEntities())
+            var newTitle = new title
             {
-                try
-                {
-                    bool titleExists = context.titles.Any(t => t.title1 == title);
+                title_id = GenerateId(type),
+                title1 = title,
+                type = type,
+                price = price,
+                advance = advance,
+                royalty = royalty,
+                ytd_sales = ytdSales,
+                notes = string.IsNullOrEmpty(notes) ? null : notes,
+                pub_id = string.IsNullOrEmpty(publisherID) ? null : publisherID,
+                pubdate = DateTime.Now
+            };
 
-                    if (titleExists)
-                    {
-                        MessageBox.Show("Title already exists!", "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    var newTitle = new title
-                    {
-                        title_id = GenerateId(type),
-                        title1 = title,
-                        type = type,
-                        price = price,
-                        advance = advance,
-                        royalty = royalty,
-                        ytd_sales = ytdSales,
-                        notes = string.IsNullOrEmpty(notes) ? null : notes,
-                        pub_id = publisherID,
-                        pubdate = DateTime.Now
-                    };
-
-                    context.titles.Add(newTitle);
-                    context.SaveChanges();
-                    txtSearchBar_TextChanged(sender, e);
-                    MessageBox.Show("Title added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred while adding the title:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            if (_titleService.CreateTitle(newTitle))
+            {
+                MessageBox.Show("Title added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSearchBar_TextChanged(sender, e);
             }
-        }
-
-        private void DeleteRoyschedRecords(string titleId)
-        {
-            using (var context = new BookStoreEntities())
+            else
             {
-                context.Database.ExecuteSqlCommand(
-                    "DELETE FROM roysched WHERE title_id = @p0", titleId);
+                MessageBox.Show("Title already exists!", "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            string selected = lstBooksToAdd.SelectedItem?.ToString();
-            if (string.IsNullOrEmpty(selected))
+            if (lstBooksToAdd.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a title to remove.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string[] selectedId = selected.Split(' ');
-            string titleId = selectedId.Last();
+            string selected = lstBooksToAdd.SelectedItem.ToString();
+            string titleId = selected.Split('(').Last().Trim(')');
 
-            using (var context = new BookStoreEntities())
+            try
             {
-                try
-                {
-                    DeleteRoyschedRecords(titleId);
-
-                    var relatedAuthors = context.titleauthors.Where(ta => ta.title_id == titleId).ToList();
-                    context.titleauthors.RemoveRange(relatedAuthors);
-
-                    var relatedSales = context.sales.Where(s => s.title_id == titleId).ToList();
-                    context.sales.RemoveRange(relatedSales);
-
-                    var titleToRemove = context.titles.SingleOrDefault(t => t.title_id == titleId);
-                    if (titleToRemove != null)
-                    {
-                        context.titles.Remove(titleToRemove);
-                        context.SaveChanges();
-                        MessageBox.Show("Title removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Title not found!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error occurred while removing the title:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                _titleService.RemoveTitle(titleId);
+                MessageBox.Show("Title removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSearchBar_TextChanged(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error removing title:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-
-
-
-        private void ClearInputFields()
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            txtTitle.Text = "";
-            txtType.Text = "";
-            txtPrice.Text = "";
-            txtAdvance.Text = "";
-            txtRoyalty.Text = "";
-            txtYTDSales.Text = "";
-            txtNotes.Text = "";
-            txtPublisherID.Text = "";
+            this.Close();
         }
 
         private void DecimalEditor(object sender, KeyPressEventArgs e)
@@ -264,10 +218,6 @@ namespace Final_Project
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         private string GenerateId(string type)
         {
             Dictionary<string, string> typePrefixMap = new Dictionary<string, string>
@@ -292,7 +242,7 @@ namespace Final_Project
                     .OrderByDescending(id => id)
                     .FirstOrDefault();
 
-                int nextNumber = 1; 
+                int nextNumber = 1;
 
                 if (maxId != null && int.TryParse(maxId, out int currentMax))
                 {
@@ -308,7 +258,5 @@ namespace Final_Project
                 return $"{prefix}{numericPart}";
             }
         }
-
-
     }
 }

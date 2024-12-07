@@ -59,7 +59,7 @@
             // 
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.Location = new System.Drawing.Point(1123, 448);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(133, 38);
             this.btnRemove.TabIndex = 58;
@@ -71,7 +71,7 @@
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(975, 448);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(133, 38);
             this.btnAdd.TabIndex = 57;
@@ -83,7 +83,7 @@
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(1123, 15);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(133, 38);
             this.btnExit.TabIndex = 56;
@@ -94,7 +94,7 @@
             // txtNotes
             // 
             this.txtNotes.Location = new System.Drawing.Point(17, 652);
-            this.txtNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtNotes.MaxLength = 200;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(1263, 22);
@@ -103,7 +103,7 @@
             // txtYTDSales
             // 
             this.txtYTDSales.Location = new System.Drawing.Point(1007, 575);
-            this.txtYTDSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtYTDSales.Margin = new System.Windows.Forms.Padding(4);
             this.txtYTDSales.Name = "txtYTDSales";
             this.txtYTDSales.Size = new System.Drawing.Size(132, 22);
             this.txtYTDSales.TabIndex = 53;
@@ -111,7 +111,7 @@
             // txtRoyalty
             // 
             this.txtRoyalty.Location = new System.Drawing.Point(865, 575);
-            this.txtRoyalty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRoyalty.Margin = new System.Windows.Forms.Padding(4);
             this.txtRoyalty.Name = "txtRoyalty";
             this.txtRoyalty.Size = new System.Drawing.Size(132, 22);
             this.txtRoyalty.TabIndex = 52;
@@ -119,7 +119,7 @@
             // txtAdvance
             // 
             this.txtAdvance.Location = new System.Drawing.Point(724, 575);
-            this.txtAdvance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAdvance.Margin = new System.Windows.Forms.Padding(4);
             this.txtAdvance.Name = "txtAdvance";
             this.txtAdvance.Size = new System.Drawing.Size(132, 22);
             this.txtAdvance.TabIndex = 51;
@@ -128,7 +128,7 @@
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(583, 575);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(132, 22);
             this.txtPrice.TabIndex = 50;
@@ -137,7 +137,7 @@
             // txtPublisherID
             // 
             this.txtPublisherID.Location = new System.Drawing.Point(441, 575);
-            this.txtPublisherID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPublisherID.Margin = new System.Windows.Forms.Padding(4);
             this.txtPublisherID.Name = "txtPublisherID";
             this.txtPublisherID.Size = new System.Drawing.Size(132, 22);
             this.txtPublisherID.TabIndex = 49;
@@ -145,7 +145,7 @@
             // txtType
             // 
             this.txtType.Location = new System.Drawing.Point(300, 575);
-            this.txtType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtType.Margin = new System.Windows.Forms.Padding(4);
             this.txtType.MaxLength = 12;
             this.txtType.Name = "txtType";
             this.txtType.Size = new System.Drawing.Size(132, 22);
@@ -154,7 +154,7 @@
             // txtTitleID
             // 
             this.txtTitleID.Location = new System.Drawing.Point(159, 575);
-            this.txtTitleID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTitleID.Margin = new System.Windows.Forms.Padding(4);
             this.txtTitleID.Name = "txtTitleID";
             this.txtTitleID.Size = new System.Drawing.Size(132, 22);
             this.txtTitleID.TabIndex = 47;
@@ -162,7 +162,7 @@
             // txtTitle
             // 
             this.txtTitle.Location = new System.Drawing.Point(17, 575);
-            this.txtTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtTitle.MaxLength = 80;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(132, 22);
@@ -281,7 +281,7 @@
             // txtSearchBar
             // 
             this.txtSearchBar.Location = new System.Drawing.Point(17, 30);
-            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchBar.Name = "txtSearchBar";
             this.txtSearchBar.Size = new System.Drawing.Size(404, 22);
             this.txtSearchBar.TabIndex = 35;
@@ -293,17 +293,17 @@
             this.lstBooksToAdd.FormattingEnabled = true;
             this.lstBooksToAdd.ItemHeight = 16;
             this.lstBooksToAdd.Location = new System.Drawing.Point(17, 66);
-            this.lstBooksToAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstBooksToAdd.Margin = new System.Windows.Forms.Padding(4);
             this.lstBooksToAdd.Name = "lstBooksToAdd";
             this.lstBooksToAdd.ScrollAlwaysVisible = true;
             this.lstBooksToAdd.Size = new System.Drawing.Size(1237, 356);
             this.lstBooksToAdd.TabIndex = 34;
-            this.lstBooksToAdd.SelectedIndexChanged += new System.EventHandler(this.lstTitles_SelectedIndexChanged);
+            this.lstBooksToAdd.SelectedIndexChanged += new System.EventHandler(this.lstBooksToAdd_SelectedIndexChanged);
             // 
             // mtxtPublishedDate
             // 
             this.mtxtPublishedDate.Location = new System.Drawing.Point(1148, 575);
-            this.mtxtPublishedDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxtPublishedDate.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtPublishedDate.Mask = "00/00/0000";
             this.mtxtPublishedDate.Name = "mtxtPublishedDate";
             this.mtxtPublishedDate.Size = new System.Drawing.Size(132, 22);
@@ -341,7 +341,8 @@
             this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.lstBooksToAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frmSearchTitles";
             this.Text = "Product Screen";
             this.ResumeLayout(false);

@@ -50,9 +50,10 @@
             // btnRemove
             // 
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.Location = new System.Drawing.Point(895, 385);
+            this.btnRemove.Location = new System.Drawing.Point(1193, 474);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(100, 31);
+            this.btnRemove.Size = new System.Drawing.Size(133, 38);
             this.btnRemove.TabIndex = 107;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -61,9 +62,10 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(895, 33);
+            this.btnExit.Location = new System.Drawing.Point(1193, 41);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 31);
+            this.btnExit.Size = new System.Drawing.Size(133, 38);
             this.btnExit.TabIndex = 106;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -71,59 +73,66 @@
             // 
             // txtZip
             // 
-            this.txtZip.Location = new System.Drawing.Point(596, 488);
+            this.txtZip.Location = new System.Drawing.Point(795, 601);
+            this.txtZip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtZip.MaxLength = 5;
             this.txtZip.Name = "txtZip";
-            this.txtZip.Size = new System.Drawing.Size(100, 20);
+            this.txtZip.Size = new System.Drawing.Size(132, 22);
             this.txtZip.TabIndex = 101;
             // 
             // txtState
             // 
-            this.txtState.Location = new System.Drawing.Point(490, 488);
+            this.txtState.Location = new System.Drawing.Point(653, 601);
+            this.txtState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtState.MaxLength = 2;
             this.txtState.Name = "txtState";
-            this.txtState.Size = new System.Drawing.Size(100, 20);
+            this.txtState.Size = new System.Drawing.Size(132, 22);
             this.txtState.TabIndex = 100;
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(384, 488);
+            this.txtCity.Location = new System.Drawing.Point(512, 601);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCity.MaxLength = 20;
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(100, 20);
+            this.txtCity.Size = new System.Drawing.Size(132, 22);
             this.txtCity.TabIndex = 99;
             // 
             // txtStoreAddress
             // 
-            this.txtStoreAddress.Location = new System.Drawing.Point(278, 488);
+            this.txtStoreAddress.Location = new System.Drawing.Point(371, 601);
+            this.txtStoreAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStoreAddress.MaxLength = 40;
             this.txtStoreAddress.Name = "txtStoreAddress";
-            this.txtStoreAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtStoreAddress.Size = new System.Drawing.Size(132, 22);
             this.txtStoreAddress.TabIndex = 98;
             // 
             // txtStoreName
             // 
-            this.txtStoreName.Location = new System.Drawing.Point(172, 488);
+            this.txtStoreName.Location = new System.Drawing.Point(229, 601);
+            this.txtStoreName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStoreName.MaxLength = 40;
             this.txtStoreName.Name = "txtStoreName";
-            this.txtStoreName.Size = new System.Drawing.Size(100, 20);
+            this.txtStoreName.Size = new System.Drawing.Size(132, 22);
             this.txtStoreName.TabIndex = 97;
             // 
             // txtStoreId
             // 
-            this.txtStoreId.Location = new System.Drawing.Point(66, 488);
+            this.txtStoreId.Location = new System.Drawing.Point(88, 601);
+            this.txtStoreId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStoreId.MaxLength = 4;
             this.txtStoreId.Name = "txtStoreId";
-            this.txtStoreId.Size = new System.Drawing.Size(100, 20);
+            this.txtStoreId.Size = new System.Drawing.Size(132, 22);
             this.txtStoreId.TabIndex = 96;
             // 
             // lblZip
             // 
             this.lblZip.AutoSize = true;
             this.lblZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZip.Location = new System.Drawing.Point(592, 455);
+            this.lblZip.Location = new System.Drawing.Point(789, 560);
+            this.lblZip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblZip.Name = "lblZip";
-            this.lblZip.Size = new System.Drawing.Size(31, 20);
+            this.lblZip.Size = new System.Drawing.Size(39, 25);
             this.lblZip.TabIndex = 91;
             this.lblZip.Text = "Zip";
             // 
@@ -131,9 +140,10 @@
             // 
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblState.Location = new System.Drawing.Point(486, 455);
+            this.lblState.Location = new System.Drawing.Point(648, 560);
+            this.lblState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(48, 20);
+            this.lblState.Size = new System.Drawing.Size(58, 25);
             this.lblState.TabIndex = 90;
             this.lblState.Text = "State";
             // 
@@ -141,9 +151,10 @@
             // 
             this.lblCity.AutoSize = true;
             this.lblCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCity.Location = new System.Drawing.Point(380, 455);
+            this.lblCity.Location = new System.Drawing.Point(507, 560);
+            this.lblCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(35, 20);
+            this.lblCity.Size = new System.Drawing.Size(46, 25);
             this.lblCity.TabIndex = 89;
             this.lblCity.Text = "City";
             // 
@@ -151,9 +162,10 @@
             // 
             this.lblStoreAddress.AutoSize = true;
             this.lblStoreAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStoreAddress.Location = new System.Drawing.Point(274, 455);
+            this.lblStoreAddress.Location = new System.Drawing.Point(365, 560);
+            this.lblStoreAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStoreAddress.Name = "lblStoreAddress";
-            this.lblStoreAddress.Size = new System.Drawing.Size(111, 20);
+            this.lblStoreAddress.Size = new System.Drawing.Size(137, 25);
             this.lblStoreAddress.TabIndex = 88;
             this.lblStoreAddress.Text = "Store Address";
             // 
@@ -161,9 +173,10 @@
             // 
             this.lblStoreName.AutoSize = true;
             this.lblStoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStoreName.Location = new System.Drawing.Point(168, 455);
+            this.lblStoreName.Location = new System.Drawing.Point(224, 560);
+            this.lblStoreName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStoreName.Name = "lblStoreName";
-            this.lblStoreName.Size = new System.Drawing.Size(94, 20);
+            this.lblStoreName.Size = new System.Drawing.Size(116, 25);
             this.lblStoreName.TabIndex = 87;
             this.lblStoreName.Text = "Store Name";
             // 
@@ -171,36 +184,41 @@
             // 
             this.lblStoreId.AutoSize = true;
             this.lblStoreId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStoreId.Location = new System.Drawing.Point(62, 455);
+            this.lblStoreId.Location = new System.Drawing.Point(83, 560);
+            this.lblStoreId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStoreId.Name = "lblStoreId";
-            this.lblStoreId.Size = new System.Drawing.Size(69, 20);
+            this.lblStoreId.Size = new System.Drawing.Size(83, 25);
             this.lblStoreId.TabIndex = 86;
             this.lblStoreId.Text = "Store ID";
             // 
             // txtSearchBar
             // 
-            this.txtSearchBar.Location = new System.Drawing.Point(66, 45);
+            this.txtSearchBar.Location = new System.Drawing.Point(88, 55);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(304, 20);
+            this.txtSearchBar.Size = new System.Drawing.Size(404, 22);
             this.txtSearchBar.TabIndex = 85;
             this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
             // 
             // lstStores
             // 
             this.lstStores.FormattingEnabled = true;
-            this.lstStores.Location = new System.Drawing.Point(66, 75);
+            this.lstStores.ItemHeight = 16;
+            this.lstStores.Location = new System.Drawing.Point(88, 92);
+            this.lstStores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstStores.Name = "lstStores";
             this.lstStores.ScrollAlwaysVisible = true;
-            this.lstStores.Size = new System.Drawing.Size(929, 290);
+            this.lstStores.Size = new System.Drawing.Size(1237, 356);
             this.lstStores.TabIndex = 84;
             this.lstStores.SelectedIndexChanged += new System.EventHandler(this.lstStores_SelectedIndexChanged);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(789, 385);
+            this.btnAdd.Location = new System.Drawing.Point(1052, 474);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 31);
+            this.btnAdd.Size = new System.Drawing.Size(133, 38);
             this.btnAdd.TabIndex = 108;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -208,9 +226,9 @@
             // 
             // frmStores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 600);
+            this.ClientSize = new System.Drawing.Size(1452, 738);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnExit);
@@ -229,6 +247,8 @@
             this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.lstStores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
             this.Name = "frmStores";
             this.Text = "Stores";
             this.ResumeLayout(false);
