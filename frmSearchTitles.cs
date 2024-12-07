@@ -172,7 +172,15 @@ namespace Final_Project
             }
         }
 
-       
+        private void DeleteRoyschedRecords(string titleId)
+        {
+            using (var context = new BookStoreEntities())
+            {
+                context.Database.ExecuteSqlCommand(
+                    "DELETE FROM roysched WHERE title_id = @p0", titleId);
+            }
+        }
+
         private void btnRemove_Click(object sender, EventArgs e)
         {
             string selected = lstBooksToAdd.SelectedItem?.ToString();
@@ -185,25 +193,29 @@ namespace Final_Project
             string[] selectedId = selected.Split(' ');
             string titleId = selectedId.Last();
 
-            using (BookStoreEntities context = new BookStoreEntities())
+            using (var context = new BookStoreEntities())
             {
                 try
                 {
-                    var titleToRemove = context.titles.SingleOrDefault(t => t.title_id == titleId);
+                    DeleteRoyschedRecords(titleId);
 
-                    if (titleToRemove == null)
+                    var relatedAuthors = context.titleauthors.Where(ta => ta.title_id == titleId).ToList();
+                    context.titleauthors.RemoveRange(relatedAuthors);
+
+                    var relatedSales = context.sales.Where(s => s.title_id == titleId).ToList();
+                    context.sales.RemoveRange(relatedSales);
+
+                    var titleToRemove = context.titles.SingleOrDefault(t => t.title_id == titleId);
+                    if (titleToRemove != null)
+                    {
+                        context.titles.Remove(titleToRemove);
+                        context.SaveChanges();
+                        MessageBox.Show("Title removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
                     {
                         MessageBox.Show("Title not found!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
                     }
-
-                    context.titles.Remove(titleToRemove);
-                    context.SaveChanges();
-
-                    MessageBox.Show("Title removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                   
-                    txtSearchBar_TextChanged(sender, e);
                 }
                 catch (Exception ex)
                 {
@@ -212,7 +224,10 @@ namespace Final_Project
             }
         }
 
-       
+
+
+
+
         private void ClearInputFields()
         {
             txtTitle.Text = "";

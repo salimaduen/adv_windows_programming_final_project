@@ -162,14 +162,36 @@ namespace Final_Project
             {
                 try
                 {
+                    // Check if the publisher exists
                     var publisherToRemove = context.publishers.SingleOrDefault(p => p.pub_id == id);
-
                     if (publisherToRemove == null)
                     {
                         MessageBox.Show("Publisher not found!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
+                    // Update pub_id for all titles referencing this publisher to the new ID (9952)
+                    var relatedTitles = context.titles.Where(t => t.pub_id == id).ToList();
+                    foreach (var title in relatedTitles)
+                    {
+                        title.pub_id = null; // Set pub_id to the new ID
+                    }
+
+                    // Update pub_id for employees referencing this publisher to the new ID (9952)
+                    var relatedEmployees = context.employees.Where(es => es.pub_id == id).ToList();
+                    foreach (var employee in relatedEmployees)
+                    {
+                        employee.pub_id = "9952"; // Set pub_id to the new ID
+                    }
+
+                    // Remove related records in pub_info
+                    var relatedPubInfo = context.pub_info.SingleOrDefault(pi => pi.pub_id == id);
+                    if (relatedPubInfo != null)
+                    {
+                        context.pub_info.Remove(relatedPubInfo);
+                    }
+
+                    // Finally, remove the publisher
                     context.publishers.Remove(publisherToRemove);
                     context.SaveChanges();
 
@@ -185,6 +207,7 @@ namespace Final_Project
                 }
             }
         }
+
 
         private void ClearInputFields()
         {

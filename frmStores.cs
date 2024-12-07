@@ -146,15 +146,25 @@ namespace Final_Project
 
                 using (BookStoreEntities context = new BookStoreEntities())
                 {
+                    // Check if the store exists
                     var storeToRemove = context.stores.SingleOrDefault(s => s.stor_id == id);
-
                     if (storeToRemove == null)
                     {
                         MessageBox.Show("Store not found!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
+                    // Handle related sales records by deleting them
+                    var relatedSales = context.sales.Where(s => s.stor_id == id).ToList();
+                    if (relatedSales.Any())
+                    {
+                        context.sales.RemoveRange(relatedSales);
+                    }
+
+                    // Remove the store
                     context.stores.Remove(storeToRemove);
+
+                    // Save changes to the database
                     context.SaveChanges();
                 }
 
@@ -173,7 +183,6 @@ namespace Final_Project
             }
         }
 
-       
 
         private void ClearInputFields()
         {
