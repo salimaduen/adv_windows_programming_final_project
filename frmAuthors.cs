@@ -51,7 +51,7 @@ namespace Final_Project
                 {
                     foreach (var author in authors)
                     {
-                        lstAuthors.Items.Add($"{author.au_fname} {author.au_lname} {author.au_id}");
+                        lstAuthors.Items.Add($"{author.au_fname} {author.au_lname} ({author.au_id})");
                     }
                 }
                 else
@@ -69,17 +69,52 @@ namespace Final_Project
         {
             try
             {
+                string auId = txtId.Text.Trim();
+                if (!Regex.IsMatch(auId, @"^\d{3}-\d{2}-\d{4}$"))
+                {
+                    MessageBox.Show("Author ID must be in the format XXX-XX-XXXX and consist only of digits.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string auFname = txtFname.Text.Trim();
+                if (string.IsNullOrEmpty(auFname) || auFname.Length > 20)
+                {
+                    MessageBox.Show("First name cannot be empty and must not exceed 20 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string auLname = txtLName.Text.Trim();
+                if (string.IsNullOrEmpty(auLname) || auLname.Length > 40)
+                {
+                    MessageBox.Show("Last name cannot be empty and must not exceed 40 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string zip = txtZip.Text.Trim();
+                if (!string.IsNullOrWhiteSpace(zip) && !Regex.IsMatch(zip, @"^\d{5}$"))
+                {
+                    MessageBox.Show("ZIP code must consist of exactly 5 digits.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                bool contract = false;
+                if (!bool.TryParse(cmbContract.Text.Trim(), out contract))
+                {
+                    MessageBox.Show("Contract must be either 'True' or 'False'.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var newAuthor = new author
                 {
-                    au_id = txtId.Text.Trim(),
-                    au_fname = txtFname.Text.Trim(),
-                    au_lname = txtLName.Text.Trim(),
-                    phone = Regex.Replace(txtPhone.Text.Trim(), @"[()\\s]", ""),
-                    address = string.IsNullOrWhiteSpace(txtAddress.Text) ? null : txtAddress.Text,
-                    city = string.IsNullOrWhiteSpace(txtCity.Text) ? null : txtCity.Text,
+                    au_id = auId,
+                    au_fname = auFname,
+                    au_lname = auLname,
+                    phone = Regex.Replace(txtPhone.Text.Trim(), @"[()\s-]", ""), 
+                    address = string.IsNullOrWhiteSpace(txtAddress.Text) ? null : txtAddress.Text.Trim(),
+                    city = string.IsNullOrWhiteSpace(txtCity.Text) ? null : txtCity.Text.Trim(),
                     state = txtState.Text.Trim().ToUpper(),
-                    zip = txtZip.Text.Trim(),
-                    contract = bool.Parse(cmbContract.Text.Trim())
+                    zip = zip,
+                    contract = contract
                 };
 
                 _authorService.CreateAuthor(newAuthor);
@@ -98,7 +133,7 @@ namespace Final_Project
             if (lstAuthors.SelectedIndex == -1) return;
 
             string selected = lstAuthors.SelectedItem.ToString();
-            string authorId = selected.Split(' ').Last();
+            string authorId = selected.Split(' ').Last().Trim(new char[] { '(', ')' });
 
             try
             {
@@ -168,5 +203,4 @@ namespace Final_Project
             this.Close();
         }
     }
-
 }
