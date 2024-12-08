@@ -288,7 +288,6 @@ namespace Final_Project
                 return false;
             }
 
-            // Validate Type
             var validTypes = new List<string> { "business", "mod_cook", "trad_cook", "psychology", "popular_comp", "UNDECIDED" };
             if (string.IsNullOrWhiteSpace(txtType.Text) || txtType.Text.Length > 12 || !validTypes.Contains(txtType.Text.ToLower()))
             {
