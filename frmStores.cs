@@ -106,14 +106,35 @@ namespace Final_Project
         {
             try
             {
+                string storId = txtStoreId.Text.Trim();
+                if (string.IsNullOrEmpty(storId) || storId.Length != 4)
+                {
+                    MessageBox.Show("Store ID must be exactly 4 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string state = txtState.Text.Trim().ToUpper();
+                if (!string.IsNullOrEmpty(state) && state.Length != 2)
+                {
+                    MessageBox.Show("State must be exactly 2 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string zip = txtZip.Text.Trim();
+                if (!string.IsNullOrEmpty(zip) && zip.Length != 5)
+                {
+                    MessageBox.Show("ZIP code must be exactly 5 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var newStore = new store
                 {
-                    stor_id = txtStoreId.Text.Trim(),
+                    stor_id = storId,
                     stor_name = txtStoreName.Text.Trim(),
                     stor_address = string.IsNullOrEmpty(txtStoreAddress.Text) ? null : txtStoreAddress.Text.Trim(),
                     city = string.IsNullOrEmpty(txtCity.Text) ? null : txtCity.Text.Trim(),
-                    state = txtState.Text.Trim().ToUpper(),
-                    zip = txtZip.Text.Trim()
+                    state = string.IsNullOrEmpty(state) ? null : state,
+                    zip = string.IsNullOrEmpty(zip) ? null : zip
                 };
 
                 _storeService.CreateStore(newStore);
@@ -170,5 +191,4 @@ namespace Final_Project
             this.Close();
         }
     }
-
 }

@@ -108,13 +108,50 @@ namespace Final_Project
         {
             try
             {
+                string pubId = txtPubId.Text.Trim();
+
+
+                if (!IsValidPubId(pubId))
+                {
+                    MessageBox.Show("Publisher ID must be '1756', '1622', '0877', '0736', '1389', or start with '99' followed by any two digits.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string pubName = txtPubName.Text.Trim();
+                if (pubName.Length > 40)
+                {
+                    MessageBox.Show("Publisher name cannot exceed 40 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string city = txtCity.Text.Trim();
+                if (city.Length > 20)
+                {
+                    MessageBox.Show("City name cannot exceed 20 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string state = txtState.Text.Trim();
+                if (state.Length != 2)
+                {
+                    MessageBox.Show("State must be exactly 2 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string country = txtCountry.Text.Trim();
+                if (country.Length > 30)
+                {
+                    MessageBox.Show("Country name cannot exceed 30 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var newPublisher = new publisher
                 {
-                    pub_id = txtPubId.Text.Trim(),
-                    pub_name = txtPubName.Text.Trim(),
-                    city = txtCity.Text.Trim(),
-                    state = txtState.Text.Trim().ToUpper(),
-                    country = txtCountry.Text.Trim()
+                    pub_id = pubId,
+                    pub_name = pubName,
+                    city = city,
+                    state = state,
+                    country = country
                 };
 
                 _publisherService.AddPublisher(newPublisher);
@@ -170,6 +207,10 @@ namespace Final_Project
         {
             this.Close();
         }
-    }
 
+        private bool IsValidPubId(string pubId)
+        {
+            return pubId == "1756" || pubId == "1622" || pubId == "0877" || pubId == "0736" || pubId == "1389" || (pubId.StartsWith("99") && pubId.Length == 4);
+        }
+    }
 }
