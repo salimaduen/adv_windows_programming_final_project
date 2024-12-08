@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -83,7 +84,7 @@ namespace Final_Project
             {
                 txtTitleID.Text = title.title_id;
                 txtTitle.Text = title.title1;
-                txtType.Text = title.type;
+                txtType.Text = title.type.Trim();
                 txtPublisherID.Text = title.pub_id;
                 txtPrice.Text = title.price?.ToString("C");
                 txtAdvance.Text = title.advance?.ToString("C");
@@ -132,37 +133,49 @@ namespace Final_Project
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string title = txtTitle.Text.Trim();
-            string type = txtType.Text.Trim();
-            decimal? price = string.IsNullOrEmpty(txtAdvance.Text) ? (decimal?)null : decimal.Parse(txtPrice.Text.Replace("$", ""));
-            decimal? advance = string.IsNullOrEmpty(txtAdvance.Text) ? (decimal?)null : decimal.Parse(txtAdvance.Text.Replace("$", "").Replace(",", ""));
-            int? royalty = string.IsNullOrEmpty(txtRoyalty.Text) ? (int?)null : int.Parse(txtRoyalty.Text);
-            int? ytdSales = string.IsNullOrEmpty(txtYTDSales.Text) ? (int?)null : int.Parse(txtYTDSales.Text);
-            string notes = txtNotes.Text.Trim();
-            string publisherID = txtPublisherID.Text.Trim();
-
-            var newTitle = new title
+            if (!ValidateAddTitleInputs())
             {
-                title_id = GenerateId(type),
-                title1 = title,
-                type = type,
-                price = price,
-                advance = advance,
-                royalty = royalty,
-                ytd_sales = ytdSales,
-                notes = string.IsNullOrEmpty(notes) ? null : notes,
-                pub_id = string.IsNullOrEmpty(publisherID) ? null : publisherID,
-                pubdate = DateTime.Now
-            };
-
-            if (_titleService.CreateTitle(newTitle))
-            {
-                MessageBox.Show("Title added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtSearchBar_TextChanged(sender, e);
+                return; 
             }
-            else
+
+            try
             {
-                MessageBox.Show("Title already exists!", "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                string title = txtTitle.Text.Trim();
+                string type = txtType.Text.Trim();
+                decimal? price = string.IsNullOrEmpty(txtPrice.Text) ? (decimal?)null : decimal.Parse(txtPrice.Text.Replace("$", ""));
+                decimal? advance = string.IsNullOrEmpty(txtAdvance.Text) ? (decimal?)null : decimal.Parse(txtAdvance.Text.Replace("$", ""));
+                int? royalty = string.IsNullOrEmpty(txtRoyalty.Text) ? (int?)null : int.Parse(txtRoyalty.Text);
+                int? ytdSales = string.IsNullOrEmpty(txtYTDSales.Text) ? (int?)null : int.Parse(txtYTDSales.Text);
+                string notes = string.IsNullOrEmpty(txtNotes.Text) ? null : txtNotes.Text.Trim();
+                string publisherID = string.IsNullOrEmpty(txtPublisherID.Text) ? null : txtPublisherID.Text.Trim();
+
+                var newTitle = new title
+                {
+                    title_id = GenerateId(type),
+                    title1 = title,
+                    type = type,
+                    price = price,
+                    advance = advance,
+                    royalty = royalty,
+                    ytd_sales = ytdSales,
+                    notes = notes,
+                    pub_id = publisherID,
+                    pubdate = DateTime.Parse(mtxtPublishedDate.Text)
+                };
+
+                if (_titleService.CreateTitle(newTitle))
+                {
+                    MessageBox.Show("Title added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtSearchBar_TextChanged(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Title already exists!", "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding title: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -258,5 +271,94 @@ namespace Final_Project
                 return $"{prefix}{numericPart}";
             }
         }
+
+        private bool ValidateAddTitleInputs()
+        {
+            
+            if (string.IsNullOrWhiteSpace(txtTitle.Text) || txtTitle.Text.Length > 80)
+            {
+                MessageBox.Show("Title is required and cannot exceed 80 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            
+            if (string.IsNullOrWhiteSpace(txtTitleID.Text))
+            {
+                MessageBox.Show("Title ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validate Type
+            var validTypes = new List<string> { "business", "mod_cook", "trad_cook", "psychology", "popular_comp", "UNDECIDED" };
+            if (string.IsNullOrWhiteSpace(txtType.Text) || txtType.Text.Length > 12 || !validTypes.Contains(txtType.Text.ToLower()))
+            {
+                MessageBox.Show("Type is required, cannot exceed 12 characters, and must match one of the predefined types.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+         
+            if (!string.IsNullOrEmpty(txtPublisherID.Text))
+            {
+                var validPubIds = new List<string> { "1756", "1622", "0877", "0736", "1389" };
+                if (!validPubIds.Contains(txtPublisherID.Text.Trim()) && !Regex.IsMatch(txtPublisherID.Text.Trim(), @"^99[0-9]{2}$"))
+                {
+                    MessageBox.Show("Publisher ID must be valid (e.g., 1756, 9952).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtPrice.Text))
+            {
+                string priceText = txtPrice.Text.Replace("$", "").Trim();
+                if (!decimal.TryParse(priceText, out decimal price) || price <= 0)
+                {
+                    MessageBox.Show("Price must be a valid positive decimal number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtAdvance.Text))
+            {
+                string advanceText = txtAdvance.Text.Replace("$", "").Trim();
+                if (!decimal.TryParse(advanceText, out decimal advance) || advance <= 0)
+                {
+                    MessageBox.Show("Advance must be a valid positive decimal number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtRoyalty.Text) && (!int.TryParse(txtRoyalty.Text, out int royalty) || royalty < 0))
+            {
+                MessageBox.Show("Royalty must be a valid positive integer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(txtYTDSales.Text) && (!int.TryParse(txtYTDSales.Text, out int ytdSales) || ytdSales < 0))
+            {
+                MessageBox.Show("Year-to-Date Sales must be a valid positive integer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(txtNotes.Text) && txtNotes.Text.Length > 200)
+            {
+                MessageBox.Show("Notes cannot exceed 200 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!DateTime.TryParse(mtxtPublishedDate.Text, out DateTime pubDate))
+            {
+                MessageBox.Show("Published Date must be a valid date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (pubDate > DateTime.Now)
+            {
+                MessageBox.Show("Published Date cannot be in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }
